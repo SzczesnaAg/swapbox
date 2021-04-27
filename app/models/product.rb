@@ -3,4 +3,8 @@ class Product < ApplicationRecord
   validates :title, presence: true
   validates :city, presence: true
   validates :street, presence: true
+
+  belongs_to :user
+
+  default_scope { order(created_at: :desc) }
 end

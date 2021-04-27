@@ -8,8 +8,8 @@
           <p class="card-text">Type: <%= product.category %></p>
           <p class="card-text"><i class="fas fa-map-marker-alt"></i><%= product.city %></p>
         </div>
+        <%= link_to "Delete", method: :delete %>
       </div>
     <% end %>
   </div>
 </div>
-
