@@ -8,7 +8,9 @@
           <p class="card-text">Type: <%= product.category %></p>
           <p class="card-text"><i class="fas fa-map-marker-alt"></i><%= product.city %></p>
         </div>
-        <%= link_to "Delete", method: :delete %>
+        <% if policy(product).destroy? %>
+        <%= link_to "Delete", product_path(product), method: :delete %>
+        <% end %>
       </div>
     <% end %>
   </div>
