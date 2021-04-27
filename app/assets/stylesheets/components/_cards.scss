@@ -14,3 +14,19 @@
 .card img {
   height: 100px;
 }
+
+.homepage-card {
+  height: 250px;
+  width: 400px;
+  background-size: cover;
+  background-position: center;
+  padding: 100px 0;
+}
+
+.puzzle-card {
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), asset-url('puzzle.jpg');
+}
+
+.book-card {
+  background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), asset-url('books.jpg');
+}
