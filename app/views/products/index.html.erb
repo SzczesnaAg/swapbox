@@ -11,6 +11,10 @@
         <% if policy(product).destroy? %>
         <%= link_to "Delete", product_path(product), method: :delete %>
         <% end %>
+        <% if policy(product).edit? %>
+        <%= link_to "Edit", edit_product_path(product) %>
+        <% end %>
+
       </div>
     <% end %>
   </div>
