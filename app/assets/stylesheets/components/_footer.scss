@@ -1,0 +1,15 @@
+.footer {
+  background-color: $light-purple;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  list-style: none;
+  padding-right: 1.25rem;
+  padding-top: 1rem;
+}
