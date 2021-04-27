@@ -2,8 +2,24 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:destroy, :show, :edit, :update]
 
   def index
-    # @products = Product.all
     @products = policy_scope(Product)
+    @markers = @products.geocoded.map do |product|
+      if product.category == 'Book'
+        {
+          lat: product.latitude,
+          lng: product.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { product: product }),
+          image_url: helpers.asset_url('book-black.png')
+        }
+      else
+        {
+          lat: product.latitude,
+          lng: product.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { product: product }),
+          image_url: helpers.asset_url('puzzle-piece.png')
+        }
+      end
+    end
   end
 
   def new

@@ -1,21 +1,30 @@
-<div class="container">
-  <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-4 h-50">
-        <img src="https://source.unsplash.com/random" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title"><%= link_to product.title, product_path(product.id) %></h5>
-          <p class="card-text">Type: <%= product.category %></p>
-          <p class="card-text"><i class="fas fa-map-marker-alt"></i><%= product.city %></p>
-        </div>
-        <% if policy(product).destroy? %>
-        <%= link_to "Delete", product_path(product), method: :delete %>
+
+<div class="d-flex">
+  <div class="container">
+    <div class="row">
+      <div class="cards">
+        <% @products.each do |product| %>
+          <div class="col-12 col-sm-12 col-md-4 col-lg-4 h-50">
+            <img src="https://source.unsplash.com/random" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= product.title %></h5>
+              <p class="card-text">Type: <%= product.category %></p>
+              <p class="card-text"><i class="fas fa-map-marker-alt"></i><%= product.city %></p>
+            </div>
+          </div>
+          <% if policy(product).destroy? %>
+          <%= link_to "Delete", product_path(product), method: :delete %>
         <% end %>
         <% if policy(product).edit? %>
         <%= link_to "Edit", edit_product_path(product) %>
         <% end %>
 
       </div>
-    <% end %>
+    </div>
+  </div>
+  <div id="map"
+   style="width: 50%; height: 100vh;"
+   data-markers="<%= @markers.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
