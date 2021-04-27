@@ -1,0 +1,20 @@
+<div class="card m-3 p-5">
+    <%= simple_form_for(@product) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <%= f.input :title, placeholder: 'e.g. Cats' %>
+        <%= f.input :category, as: :select, collection: ['Book', 'Puzzle'] %>
+        <%= f.input :description, placeholder: 'Enter a comprehensive description of the product'  %>
+        <%= f.input :street, placeholder: 'e.g. Bellerivestrasse 1' %>
+        <%= f.input :zpicode, placeholder: 'e.g. 8008'%>
+        <%= f.input :city, placeholder: 'e.g. Zürich'%>
+        <%= f.input :tags, placeholder: 'e.g. How many pieces are in your puzzle? What genre is your book?' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Add a Product", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>

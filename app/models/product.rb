@@ -10,4 +10,8 @@ class Product < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: [:will_save_change_to_street?, :will_save_change_to_zipcode?, :will_save_change_to_city?]
+
+  belongs_to :user
+
+  default_scope { order(created_at: :desc) }
 end

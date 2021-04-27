@@ -34,7 +34,12 @@ gem 'simple_form'
 
 gem 'devise'
 
+
 gem 'geocoder'
+
+# Authorization with pundit
+gem 'pundit'
+
 
 group :development, :test do
   gem 'pry-byebug'

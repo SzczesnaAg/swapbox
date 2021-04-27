@@ -1,3 +1,11 @@
 // Import page-specific CSS files here.
 @import "home";
 
+body {
+  text-align: center;
+}
+
+.wrapper {
+  background-color: #fff;
+  padding: 30px 0;
+}

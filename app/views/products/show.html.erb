@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="show-card">
+    <img src="https://source.unsplash.com/random" alt="...">
+    <div class="card-bottom">
+      <div>
+        <h1><%= @product.title  %></h1>
+        <p><%= @product.description  %></p>
+        <p><i class="fas fa-map-marker-alt"></i><%= @product.city %></p>
+      </div>
+      <div class="card-right">
+        <%= link_to 'Swap', '#', class: "btn-swap"  %>
+      </div>
+    </div>
+  </div>
+</div>
