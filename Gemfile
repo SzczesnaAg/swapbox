@@ -34,6 +34,9 @@ gem 'simple_form'
 
 gem 'devise'
 
+# Authorization with pundit
+gem 'pundit'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
