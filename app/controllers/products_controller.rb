@@ -1,16 +1,19 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: :destroy
+  before_action :set_product, only: [:destroy, :show]
 
   def index
     # @products = Product.all
     @products = policy_scope(Product)
   end
 
+
   def new
     @product = Product.new
     authorize @product
   end
 
+  def show
+  end
 
   def create
     @product = Product.new(product_params)
@@ -25,7 +28,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_path, notice: "Product was successfully destroy!"
+    redirect_to products_path, notice: "Product was successfully deleted!"
   end
 
   private
@@ -38,5 +41,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     authorize @product
   end
+
+
+ 
 
 end
