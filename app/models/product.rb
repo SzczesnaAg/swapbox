@@ -4,6 +4,10 @@ class Product < ApplicationRecord
   validates :city, presence: true
   validates :street, presence: true
 
-  geocoded_by :city
-  after_validation :geocode, if: :will_save_change_to_city?
+  def address
+    "#{street}, #{zipcode} #{city}"
+  end
+
+  geocoded_by :address
+  after_validation :geocode, if: [:will_save_change_to_street?, :will_save_change_to_zipcode?, :will_save_change_to_city?]
 end
