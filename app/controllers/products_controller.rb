@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:destroy, :show]
+  before_action :set_product, only: [:destroy, :show, :edit, :update]
 
   def index
     @products = policy_scope(Product)
@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
   def new
     @product = Product.new
     authorize @product
@@ -38,8 +37,19 @@ class ProductsController < ApplicationController
 
     @product.save
 
-    redirect_to products_path, notice: "Product was successfully created!"
-    # redirect_to @product, notice: "Product was successfully created!"
+    # redirect_to products_path, notice: "Product was successfully created!"
+    redirect_to @product, notice: "Product was successfully created!"
+  end
+
+  def edit
+  end
+
+  def update
+    if @product.update(product_params)
+      redirect_to @product, notice: "Product was successfully update"
+    else
+      render :new
+    end
   end
 
   def destroy
@@ -57,8 +67,4 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     authorize @product
   end
-
-
- 
-
 end
