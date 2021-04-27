@@ -1,3 +1,32 @@
-<div class="banner">
-
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), url(<%= asset_path 'banner.jpg' %>)">
+  <div class="container">
+    <h1>Welcome to SwapBox</h1>
+    <div class="btn-swap">Swap</div>
+  </div>
+</div>
+<div class="container">
+  <h2>How it works</h2>
+  <div class="cards">
+    <div class="card">
+      <%= image_tag 'sign-up.svg'%>
+      <h3>Sign up</h3>
+      <p>Make an account or Login</p>
+    </div>
+    <div class="card">
+      <%= image_tag 'pick-product.svg'%>
+      <h3>Upload</h3>
+      <p>Pick a book or puzzle you're ready to part ways with</p>
+    </div>
+    <div class="card">
+      <%= image_tag 'browse.svg'%>
+      <h3>Browse</h3>
+      <p>Check out the selection of puzzles and books</p>
+    </div>
+    <div class="card">
+      <%= image_tag 'request-swap.svg'%>
+      <h3>Swap</h3>
+      <p>Request a product and if the owner accepts, set up a swap time and location</p>
+    </div>
+  </div>
+  <div class="btn-swap">Start Swapping</div>
 </div>
