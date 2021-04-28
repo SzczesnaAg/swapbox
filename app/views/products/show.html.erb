@@ -1,6 +1,6 @@
 <div class="container">
   <div class="show-card">
-    <img src="https://source.unsplash.com/random" alt="...">
+    <%= cl_image_path @product.photo.attached? ? cl_image_path(@product.photo.key) : asset_path('puzzle.jpg'), alt: @product.title %>
     <div class="card-bottom">
       <div>
         <h1><%= @product.title  %></h1>
