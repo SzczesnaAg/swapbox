@@ -6,7 +6,6 @@ class ProductsController < ApplicationController
     @products = policy_scope(Product)
   end
 
-
   def new
     @product = Product.new
     authorize @product
@@ -34,15 +33,11 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :category, :description, :tags, :street, :zpicode, :city)
+    params.require(:product).permit(:title, :category, :description, :tags, :street, :zpicode, :city, :photo)
   end
 
   def set_product
     @product = Product.find(params[:id])
     authorize @product
   end
-
-
- 
-
 end
