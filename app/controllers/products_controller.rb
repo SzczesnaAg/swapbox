@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:destroy, :show, :edit, :update]
 
   def index
-    @products = policy_scope(Product).where(status: "ongoing")
+    @products = policy_scope(Product).where(status: "available")
     @markers = @products.geocoded.map do |product|
       if product.category == 'Book'
         {
@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :category, :description, :tags, :street, :zipcode, :city)
+    params.require(:product).permit(:title, :category, :description, :tags, :street, :zipcode, :city, :status)
   end
 
   def set_product

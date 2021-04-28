@@ -4,4 +4,12 @@ class SwapPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    true
+  end
+
+  def destroy?
+    user == record.user
+  end
 end

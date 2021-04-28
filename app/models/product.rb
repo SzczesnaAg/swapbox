@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  enum status: [:ongoing, :accepted]
+  enum status: [:available, :onhold, :taken]
   validates :title, presence: true
   validates :city, presence: true
   validates :street, presence: true
@@ -12,7 +12,7 @@ class Product < ApplicationRecord
   after_validation :geocode, if: [:will_save_change_to_street?, :will_save_change_to_zipcode?, :will_save_change_to_city?]
 
   belongs_to :user
-  has_many :swaps
+  has_many :swaps, dependent: :destroy
 
   default_scope { order(created_at: :desc) }
 end
