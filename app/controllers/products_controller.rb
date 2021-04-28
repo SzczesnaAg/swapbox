@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:destroy, :show, :edit, :update]
 
   def index
-    @products = policy_scope(Product)
+    @products = policy_scope(Product).where(status: "ongoing")
     @markers = @products.geocoded.map do |product|
       if product.category == 'Book'
         {
