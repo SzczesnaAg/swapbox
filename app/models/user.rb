@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   has_many :products, dependent: :destroy
   has_many :swaps, dependent: :destroy
+  has_one_attached :photo
 end
