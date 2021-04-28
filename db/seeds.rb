@@ -1,7 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
-    # t.string "category"
   # scrap from restaurant database
     # t.string "tags"
     # t.string "street"
@@ -13,6 +12,7 @@ require 'nokogiri'
 
 puts("Cleaning up database...")
 Product.destroy_all
+User.destroy_all
 puts("database cleaned")
 
 def fetch_puzzle_urls
@@ -34,31 +34,22 @@ def scrape_puzzle(url)
   description = html_doc.search('#tab-description').text
   image = html_doc.search('.productView-image').attribute('data-zoom-image').value
 
-
-  {title: title, description: description, photo: image} #image is a URL need to fix?
+  product = Product.new(
+    title: title,
+    category: "Puzzle",
+    description: description,
+    street: "Bahnhofstrasse 5",
+    zipcode: 8001,
+    city: "Zurich",
+    user: User.last
+    )
+  product.save!
 end
 
 urls = fetch_puzzle_urls
 
+user = User.create!(email: "sansa@north.com", last_name: "Stark", first_name: "Sansa", password: "123456")
+
 puzzles = urls.each do |url|
   scrape_puzzle(url)
-end
-
-1.times do
-  user = User.new(email: "ola@hola.com", last_name: "Hola", first_name: "Ola", password: "123456", photo: "https://kitt.lewagon.com/placeholder/users/hola-ale")
-  user.save!
-
-  18.times do
-    product = Product.new(
-      title:
-      category: "Puzzle"
-      description:
-      street: "Bahnhofstrasse 5"
-      zipcode: 8001
-      city: "Zurich"
-      photo:
-      )
-    product.save!
-  end
-  puts "end"
 end
