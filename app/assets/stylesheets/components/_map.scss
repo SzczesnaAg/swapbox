@@ -1,0 +1,30 @@
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+}
+
+#map {
+  position: sticky;
+  top: 0;
+}
+
+@media screen and (max-width: 575px) {
+  #map {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  #map {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #map {
+    display: block;
+  }
+}
