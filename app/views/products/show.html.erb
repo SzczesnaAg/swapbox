@@ -14,7 +14,7 @@
         <p><i class="fas fa-map-marker-alt"></i><%= @product.city %></p>
       </div>
       <div class="card-right">
-        <%= link_to 'Swap', '#', class: "btn-swap"  %>
+        <%= link_to 'Swap', product_swaps_path(@product), method: :post, class: "btn-swap"  %>
       </div>
     </div>
   </div>
