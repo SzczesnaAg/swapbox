@@ -3,22 +3,7 @@
 <div class="container">
   <h2>All yours Products</h2>
   <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
-      <%= product.photo.attached? ? cl_image_tag(product.photo.key) : image_tag('puzzle.jpg', alt: product.title) %>
-      <div class="card-body">
-        <h5 class="card-title"><%= product.title %></h5>
-        <p class="card-text">Type: <%= product.category %></p>
-        <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= product.city %></p>
-        <% if policy(product).destroy? %>
-          <%= link_to "Delete", product_path(product), method: :delete %>
-        <% end %>
-        <% if policy(product).edit? %>
-          <%= link_to "Edit", edit_product_path(product) %>
-        <% end %>
-      </div>
-      </div>
-    <% end %>
+    <%= render 'shared/my_dashboard' %>
   </div>
 </div>
 

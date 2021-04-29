@@ -10,6 +10,10 @@ class ProductsController < ApplicationController
       @products = policy_scope(Product)
     end
 
+    if params[:category].present?
+      @products = @products.where(category:params[:category])
+    end
+
     @markers = @products.geocoded.map do |product|
       if product.category == 'Book'
         {
