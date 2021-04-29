@@ -12,4 +12,7 @@ class SwapPolicy < ApplicationPolicy
   def destroy?
     user == record.user
   end
+
+  def show
+  end
 end
