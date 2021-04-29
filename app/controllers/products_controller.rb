@@ -2,6 +2,14 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:destroy, :show, :edit, :update]
 
   def index
+    # @products = policy_scope(Product)
+
+    if params[:query].present?
+      @products = policy_scope(Product).search_by(params[:query])
+    else
+      @products = policy_scope(Product)
+    end
+
     @products = policy_scope(Product).where(status: "available")
     @markers = @products.geocoded.map do |product|
       if product.category == 'Book'
@@ -20,6 +28,7 @@ class ProductsController < ApplicationController
         }
       end
     end
+
   end
 
   def new

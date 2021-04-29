@@ -1,0 +1,10 @@
+<div class="search mt-4">
+  <%= form_tag products_path, method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a product"%>
+</div>
+<div class="mt-4">
+    <%= button_tag  type: "Search", class: "btn-swap" do %>
+      <i class="fas fa-search" aria-hidden="true"></i>
+    <% end %>
+  <% end %>
+</div>

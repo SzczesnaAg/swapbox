@@ -17,4 +17,11 @@ class Product < ApplicationRecord
   has_one_attached :photo
 
   default_scope { order(created_at: :desc) }
+
+  include PgSearch::Model
+  pg_search_scope :search_by,
+    against: [:title, :description, :category, :city],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
