@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:home, :index, :show]
-  
+  skip_before_action :authenticate_user!, only: [:home, :index, :show, :faq]
+
   def home
   end
-  
+
   def index
   end
 
@@ -14,5 +14,8 @@ class PagesController < ApplicationController
   def my_dashboard
     @user = current_user
     @products = Product.where(user_id: current_user.id)
+  end
+
+  def faq
   end
 end
