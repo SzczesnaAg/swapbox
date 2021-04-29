@@ -34,6 +34,7 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'nokogiri'
 
 gem 'geocoder'
 
