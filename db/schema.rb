@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_092842) do
+ActiveRecord::Schema.define(version: 2021_04_29_091350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,22 +36,6 @@ ActiveRecord::Schema.define(version: 2021_04_28_092842) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "chatrooms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.string "content"
-    t.bigint "chatroom_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "category"
@@ -63,9 +47,9 @@ ActiveRecord::Schema.define(version: 2021_04_28_092842) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.float "latitude"
     t.float "longitude"
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -76,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_04_28_092842) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0, null: false
+    t.bigint "other_product_id"
+    t.index ["other_product_id"], name: "index_swaps_on_other_product_id"
     t.index ["product_id"], name: "index_swaps_on_product_id"
     t.index ["user_id"], name: "index_swaps_on_user_id"
   end
@@ -95,9 +81,8 @@ ActiveRecord::Schema.define(version: 2021_04_28_092842) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "products", "users"
   add_foreign_key "swaps", "products"
+  add_foreign_key "swaps", "products", column: "other_product_id"
   add_foreign_key "swaps", "users"
 end

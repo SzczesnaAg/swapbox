@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Requested Swaps</h2>
+    <div class="row">
+    <% @swaps_requests.each do |swap| %>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
+      <img src="https://source.unsplash.com/random" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= swap.product.title %></h5>
+        <p class="card-text">Type: <%= swap.product.category %></p>
+        <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= swap.product.city %></p>
+      </div>
+      </div>
+    <% end %>
+  </div>
+</div>

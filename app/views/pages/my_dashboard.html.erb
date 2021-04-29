@@ -1,7 +1,7 @@
 <h1>Hi <%= @user.first_name %></h1>
 
 <div class="container">
-  <h2>All yours Products</h2>
+  <h2>All your Products</h2>
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
@@ -22,7 +22,10 @@
   </div>
 </div>
 
+<%= render 'shared/accepted_swaps' %>
 
-<div class="container">
-  <h2>All yours Swaps</h2>
-</div>
+<%= render 'shared/swap_request_for_owner' %>
+
+<%= render 'shared/swaps_requests' %>
+
+
