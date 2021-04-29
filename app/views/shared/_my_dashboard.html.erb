@@ -8,7 +8,6 @@
       <%= image_tag('puzzle-placeholder.png', alt: product.title) %>
     <% end %>
     <div class="card-body">
-      <h5 class="card-title"><%= product.title %></h5>
       <p class="card-text">Type: <%= product.category %></p>
       <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= product.city %></p>
       <% if policy(product).destroy? %>
