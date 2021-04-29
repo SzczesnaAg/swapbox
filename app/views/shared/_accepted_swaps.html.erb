@@ -12,5 +12,16 @@
       </div>
       </div>
     <% end %>
+    <% @swaps_requests_accepted.each do |swap| %>
+      <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
+      <h3>You swaped: </h3>
+      <div class="card-body">
+        <h5 class="card-title"><%= swap.other_product.title %></h5>
+        <p class="card-text">FOR</p>
+        <h5 class="card-title"><%= swap.product.title %></h5>
+        <p class="card-text">with <%= swap.product.user.first_name %></p>
+      </div>
+      </div>
+    <% end %>
   </div>
 </div>
