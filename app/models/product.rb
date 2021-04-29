@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   validates :title, presence: true
   validates :city, presence: true
   validates :street, presence: true
+  validates :category, presence: true
 
   def address
     "#{street}, #{zipcode} #{city}"
