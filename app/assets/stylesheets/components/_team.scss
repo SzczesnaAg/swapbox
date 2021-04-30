@@ -1,9 +1,8 @@
-
 .person {
   align-items: center;
   display: flex;
   flex-direction: column;
-  width: 280px;
+  width: 380px;
 }
 .container-team {
   border-radius: 50%;
@@ -33,7 +32,6 @@
   top: -200px;
 }
 .circle {
-  background-color: #fee7d3;
   border-radius: 50%;
   cursor: pointer;
   height: 380px;
