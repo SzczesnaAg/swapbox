@@ -1,7 +1,7 @@
 class SwapChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
-    swap = Swap.find(parans[:id])
+    swap = Swap.find(params[:id])
     stream_for swap
   end
 

@@ -7,7 +7,6 @@ const initSwapCable = () => {
 
     consumer.subscriptions.create({ channel: "SwapChannel", id: id }, {
       received(data) {
-        console.log(data); // called when data is broadcast in the cable
         messagesContainer.insertAdjacentHTML('beforeend', data);
       },
     });

@@ -14,7 +14,7 @@ class SwapPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user == record.user || record.product.user = user
   end
 
   def mark_as_rejected?
