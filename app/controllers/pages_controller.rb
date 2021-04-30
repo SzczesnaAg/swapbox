@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:home, :index, :show]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show, :faq]
 
   def home
   end
@@ -19,7 +19,9 @@ class PagesController < ApplicationController
     @swaps_accepted = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(status: 1) # accepted
     @swaps_rejected = Swap.where(user_id: current_user.id, status: 2) # rejected
 
-
     @swaps = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(status: 0)
+  end
+
+  def faq
   end
 end

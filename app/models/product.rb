@@ -3,6 +3,7 @@ class Product < ApplicationRecord
   validates :title, presence: true
   validates :city, presence: true
   validates :street, presence: true
+  validates :category, presence: true
 
   def address
     "#{street}, #{zipcode} #{city}"
@@ -17,4 +18,11 @@ class Product < ApplicationRecord
   has_one_attached :photo
 
   default_scope { order(created_at: :desc) }
+
+  include PgSearch::Model
+  pg_search_scope :search_by,
+    against: [:title, :description, :category, :city],
+    using: {
+      tsearch: { prefix: true }
+    }
 end

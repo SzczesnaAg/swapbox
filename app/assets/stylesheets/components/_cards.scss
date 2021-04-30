@@ -57,12 +57,26 @@
   border: 2px solid rgba(0,0,0,0.1);
   box-shadow: 3px 6px 10px rgba(0,0,0,0.1);
   padding: 0;
+  border-radius: 2px;
+  background: white;
 }
 
 .card-index img {
   height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
+
 
 .card-dashboard img {
   height: 150px;
+  width: 100%;
+}
+
+.card-title a {
+  color: #52057b;
+}
+
+.fa-trash-alt, .fa-edit {
+  color: #52057b;
 }

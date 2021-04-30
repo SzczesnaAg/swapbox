@@ -35,10 +35,10 @@
     <h2>What are you looking for?</h2>
     <div class="cards">
       <div class="homepage-card puzzle-card">
-        <%= link_to 'Puzzles', products_path, class: "btn-swap"  %>
+        <%= link_to 'Puzzles', products_path(category:'Puzzle'), class: "btn-swap"  %>
       </div>
       <div class="homepage-card book-card">
-        <%= link_to 'Books', products_path, class: "btn-swap"  %>
+        <%= link_to 'Books', products_path(category:'Book'), class: "btn-swap"  %>
       </div>
     </div>
   </div>

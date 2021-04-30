@@ -2,7 +2,18 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:destroy, :show, :edit, :update]
 
   def index
-    @products = policy_scope(Product).where(status: "available")
+    # @products = policy_scope(Product)
+
+    if params[:query].present?
+      @products = policy_scope(Product).search_by(params[:query]).where(status: "available")
+    else
+      @products = policy_scope(Product).where(status: "available")
+    end
+
+    if params[:category].present?
+      @products = @products.where(category:params[:category])
+    end
+
     @markers = @products.geocoded.map do |product|
       if product.category == 'Book'
         {
@@ -37,7 +48,6 @@ class ProductsController < ApplicationController
 
     @product.save
 
-    # redirect_to products_path, notice: "Product was successfully created!"
     redirect_to @product, notice: "Product was successfully created!"
   end
 
@@ -54,7 +64,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_path, notice: "Product was successfully deleted!"
+    redirect_to my_dashboard_path, notice: "Product was successfully deleted!"
   end
 
   private

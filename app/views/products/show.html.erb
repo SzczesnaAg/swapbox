@@ -1,11 +1,17 @@
 <div class="container">
   <div class="show-card">
-    <%= @product.photo.attached? ? cl_image_tag(@product.photo.key) : image_tag('puzzle.jpg', alt: @product.title) %>
+    <% if @product.photo.attached? %>
+      <%= cl_image_tag(@product.photo.key) %>
+    <% elsif @product.category== 'Book' %>
+      <%= image_tag('book-placeholder.png', alt: @product.title) %>
+    <% else %>
+      <%= image_tag('puzzle-placeholder.png', alt: @product.title) %>
+    <% end %>
     <div class="card-bottom">
       <div>
         <h1><%= @product.title  %></h1>
         <p><%= @product.description  %></p>
-        <p><i class="fas fa-map-marker-alt"></i><%= @product.city %></p>
+        <p><i class="fas fa-map-marker-alt"></i> <%= @product.city %></p>
       </div>
       <div class="card-right">
         <%= link_to 'Swap', product_swaps_path(@product), method: :post, class: "btn-swap"  %>

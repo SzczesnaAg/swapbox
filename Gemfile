@@ -34,11 +34,14 @@ gem 'simple_form'
 
 gem 'devise'
 
+gem 'nokogiri'
 
 gem 'geocoder'
 
 # Authorization with pundit
 gem 'pundit'
+
+gem 'pg_search', '~> 2.3.0'
 
 gem 'cloudinary', '~> 1.16.0'
 

@@ -1,4 +1,17 @@
-<h2>
+<div>
+  <% if product.photo.attached? %>
+    <%= cl_image_tag(product.photo.key,alt: product.title, width: 200, height: 200)  %>
+  <% elsif product.category== 'Book' %>
+    <%= image_tag('book-placeholder.png', alt: product.title, width: 200, height: 200)  %>
+  <% else %>
+    <%= image_tag('puzzle-placeholder.png', alt: product.title, width: 200, height: 200)  %>
+  <% end %>
+</div>
+<div>
+  <p class="card-title">
   <%= link_to product.title, product_path(product.id) %>
-</h2>
-<p><%= product.city %></p>
+  </p>
+  <p><i class="fas fa-map-marker-alt"></i> <%= product.city %></p>
+</div>
+
+
