@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   patch 'swaps/:id/accept', to: 'swaps#mark_as_accepted', as: :accept_swap
 
   get 'faq', to: 'pages#faq'
+  get 'team', to: 'pages#team'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :products do
