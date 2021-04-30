@@ -1,13 +1,16 @@
 <h1>Hi <%= @user.first_name %></h1>
 
 <div class="container">
-  <h2>All yours Products</h2>
+  <h2>All your Products</h2>
   <div class="row">
     <%= render 'shared/my_dashboard' %>
   </div>
 </div>
 
+<%= render 'shared/accepted_swaps' %>
 
-<div class="container">
-  <h2>All yours Swaps</h2>
-</div>
+<%= render 'shared/swap_request_for_owner' %>
+
+<%= render 'shared/swaps_requests' %>
+
+
