@@ -10,7 +10,6 @@
     <div class="card-body">
       <p class="card-text">Type: <%= swap.product.category %></p>
       <p class="card-text"><%= link_to 'Details', choose_item_to_swap_path(swap), class: "btn-swap"  %></p>
-      <p class="card-text"><%= link_to 'Reject', reject_swap_path(swap), method: :patch, class: "btn-swap"  %></p>
     </div>
   </div>
 <% end %>
