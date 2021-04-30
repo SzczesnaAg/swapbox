@@ -1,5 +1,5 @@
 class SwapsController < ApplicationController
-  before_action :set_swap, only: [:show, :mark_as_rejected, :mark_as_accepted]
+  before_action :set_swap, only: [:show, :mark_as_rejected, :mark_as_accepted, :mark_as_exchanged]
 
   def create
     @product = Product.find(params[:product_id])
@@ -61,6 +61,23 @@ class SwapsController < ApplicationController
     @swap.save
     redirect_to my_dashboard_path, notice: "Congrats! You made a swap."
     authorize @swap
+  end
+
+  def mark_as_exchanged
+    @product = @swap.product
+    @other_product = @swap.other_product
+    if current_user.id == @product.user_id
+      @product.status = "exchanged"
+      @product.save
+    else
+      @other_product.status = "exchanged"
+      @other_product.save
+    end
+    if @product.status == @other_product.status
+      @swap.status = "exchanged"
+      @swap.save
+    end
+    redirect_to my_dashboard_path, notice: "You confirmed receival of the product."
   end
 
   private

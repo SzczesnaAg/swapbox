@@ -28,4 +28,8 @@ class SwapPolicy < ApplicationPolicy
   def mark_as_accepted?
     true
   end
+
+  def mark_as_exchanged?
+    user == record.user || record.product.user = user
+  end
 end
