@@ -1,0 +1,10 @@
+<h1>#<%= @swap.id %></h1>
+<div id="messages" data-swap-id="<%= @swap.id %>">
+  <% @swap.messages.each do |message| %>
+  <%= render 'messages/message', message: message  %>
+  <% end %>
+</div>
+
+<%= simple_form_for [ @swap, @message ] do |f| %>
+  <%= f.input :content, label: false, placeholder: "Organize your swap!" %>
+<% end %>

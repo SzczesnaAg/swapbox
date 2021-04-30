@@ -1,4 +1,5 @@
 class SwapsController < ApplicationController
+  before_action :set_swap, only: [:show, :mark_as_rejected, :mark_as_accepted]
 
   def create
     @product = Product.find(params[:product_id])
@@ -22,8 +23,15 @@ class SwapsController < ApplicationController
     authorize @swap
   end
 
+  def show
+    @message = Message.new
+  end
+
+  def sent_requests
+    @swaps = Swap.where(user_id: current_user.id)
+  end
+
   def mark_as_rejected
-    @swap = Swap.find(params[:id])
     @product = @swap.product
     @product.status = "available"
     @product.save
@@ -43,7 +51,6 @@ class SwapsController < ApplicationController
   end
 
   def mark_as_accepted
-    @swap = Swap.find(params[:id])
     @product = @swap.product
     @product.status = "taken"
     @product.save
@@ -60,5 +67,10 @@ class SwapsController < ApplicationController
 
   def swap_params
     params.require(:swap).permit(:status, :note, :product_id, :user_id)
+  end
+
+  def set_swap
+    @swap = Swap.find(params[:id])
+    authorize @swap
   end
 end
