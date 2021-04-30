@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   get 'faq', to: 'pages#faq'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :swaps, only: [:show] do
-    resources :messages, only: [:create]
+  resources :swaps, only: :show do
+    resources :messages, only: :create
   end
 
   resources :products do

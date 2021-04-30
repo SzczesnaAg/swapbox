@@ -13,7 +13,8 @@ class SwapPolicy < ApplicationPolicy
     user == record.user
   end
 
-  def show
+  def show?
+    true
   end
 
   def mark_as_rejected?

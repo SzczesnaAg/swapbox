@@ -24,6 +24,7 @@ class SwapsController < ApplicationController
   end
 
   def show
+    @message = Message.new
   end
 
   def sent_requests
