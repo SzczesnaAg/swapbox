@@ -6,10 +6,15 @@ class MessagesController < ApplicationController
     @message.user = current_user
 
     if @message.save
+      SwapChannel.broadcast_to(
+        @swap,
+        render_to_string(partial: "message", locals: { message: @message })
+      )
       redirect_to swap_path(@swap, anchor: "message-#{@message.id}")
     else
       render 'swaps/show'
     end
+    authorize @message
   end
 
   private
