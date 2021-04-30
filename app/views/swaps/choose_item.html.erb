@@ -1,25 +1,39 @@
-<%= simple_form_for @swap, url: accept_swap_path, method: :patch do |f| %>
+<div class="container mt-3">
+  <div class="d-flex justify-content-center">
+    <%= render 'shared/choose_item_info' %>
+  </div>
 
-  <% f.input :other_product, collection: @products %>
-  <% @products.each do |product| %>
-    <div class="col-12 col-sm-12 col-md-4 col-lg-3 card-index">
-      <%= product.photo.attached? ? cl_image_tag(product.photo.key) : image_tag('puzzle.jpg', alt: product.title) %>
-      <div class="card-body">
-        <h5 class="card-title"><%= product.title %></h5>
-        <p class="card-text">Type: <%= product.category %></p>
-        <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= product.city %></p>
-        <p class="card-text">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="other_product_id" id="other_product<%=  product.id %>" value="<%=  product.id %>" checked>
-            <label class="form-check-label" for="exampleRadios1">
-              Choose
-            </label>
+  <%= simple_form_for @swap, url: accept_swap_path, method: :patch, wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
+    <div class="row mt-2">
+      <% @products.each do |product| %>
+        <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
+          <% if product.photo.attached? %>
+            <%= cl_image_tag(product.photo.key) %>
+          <% elsif product.category== 'Book' %>
+            <%= image_tag('book-placeholder.png', alt: product.title) %>
+          <% else %>
+            <%= image_tag('puzzle-placeholder.png', alt: product.title) %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= product.title %></h5>
+            <p class="card-text">Type: <%= product.category %></p>
+            <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= product.city %></p>
+            <p class="card-text">
+              <div class="form-check ">
+                <input class="form-check-input" type="radio" name="other_product_id" id="other_product<%=  product.id %>" value="<%=  product.id %>" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                  Choose
+                </label>
+              </div>
+            </p>
           </div>
-        </p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">
+      <div class="form-actions">
+        <%= f.button :submit, "Accept", class: "btn-swap" %>
       </div>
     </div>
   <% end %>
-  <div class="form-actions">
-    <%= f.button :submit, "Swap", class: "btn-swap" %>
-  </div>
-<% end %>
+</div>

@@ -1,27 +1,27 @@
-<div class="container">
-  <h2>Accepted Swaps</h2>
-    <div class="row">
-    <% @swaps_accepted.each do |swap| %>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
-      <h3>You swaped: </h3>
+<% @swaps_accepted.each do |swap| %>
+    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+      <div class="card-header">Swap details</div>
       <div class="card-body">
-        <h5 class="card-title"><%= swap.product.title %></h5>
-        <p class="card-text">FOR</p>
-        <h5 class="card-title"><%= swap.other_product.title %></h5>
-        <p class="card-text">with <%= swap.other_product.user.first_name %></p>
+        <h5 class="card-title">You swaped:</h5>
+        <p class="card-text"><%= swap.product.title %></p>
+        <p class="card-text"> FOR </p>
+        <p class="card-text"><%= swap.other_product.title %></p>
       </div>
-      </div>
-    <% end %>
-    <% @swaps_requests_accepted.each do |swap| %>
-      <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
-      <h3>You swaped: </h3>
-      <div class="card-body">
-        <h5 class="card-title"><%= swap.other_product.title %></h5>
-        <p class="card-text">FOR</p>
-        <h5 class="card-title"><%= swap.product.title %></h5>
-        <p class="card-text">with <%= swap.product.user.first_name %></p>
-      </div>
-      </div>
-    <% end %>
+    </div>
+<% end %>
+<% @swaps_requests_accepted.each do |swap| %>
+  <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
+  <h3>You swaped: </h3>
+  <div class="card-body">
+    <h5 class="card-title"><%= swap.other_product.title %></h5>
+    <p class="card-text">FOR</p>
+    <h5 class="card-title"><%= swap.product.title %></h5>
+    <p class="card-text">with <%= swap.product.user.first_name %></p>
   </div>
-</div>
+  </div>
+<% end %>
+
+
+
+
+

@@ -1,0 +1,11 @@
+<div class="card-swap">
+  <div class="card-header">
+    Details of the Swap request
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @user %> would like to exchange products with you.</h5>
+    <p class="card-text">Choose a one product to proceed with the Swap for <%= @swap_product %></p>
+    <p>If you are not interested</p>
+    <%= link_to 'Reject', reject_swap_path(@swap), method: :patch, class: "btn-swap"  %>
+  </div>
+</div>

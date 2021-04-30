@@ -36,6 +36,8 @@ class SwapsController < ApplicationController
   def choose_item
     @swap = Swap.find(params[:id])
     @products = @swap.user.products.available
+    @user = @swap.user.first_name
+    @swap_product = @swap.product.title
 
     authorize @swap
   end
