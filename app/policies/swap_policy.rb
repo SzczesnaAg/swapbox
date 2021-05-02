@@ -18,18 +18,22 @@ class SwapPolicy < ApplicationPolicy
   end
 
   def mark_as_rejected?
-    true
+    user == record.user || record.product.user = user
   end
 
   def choose_item?
-    true
+    user == record.user || record.product.user = user
   end
 
   def mark_as_accepted?
-    true
+    user == record.user || record.product.user = user
   end
 
   def mark_as_exchanged?
     user == record.user || record.product.user = user
+  end
+
+  def mark_as_canceled?
+    user == record.user
   end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'swaps/:id/choose_item', to: 'swaps#choose_item', as: :choose_item_to_swap
   patch 'swaps/:id/accept', to: 'swaps#mark_as_accepted', as: :accept_swap
   patch 'swaps/:id/exchanged', to: 'swaps#mark_as_exchanged', as: :exchanged_swap
+  patch 'swaps/:id/canceled', to: 'swaps#mark_as_canceled', as: :canceled_swap
 
   get 'faq', to: 'pages#faq'
   get 'team', to: 'pages#team'

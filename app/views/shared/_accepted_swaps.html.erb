@@ -28,9 +28,9 @@
         <% if swap.other_product.photo.attached? %>
           <%= cl_image_tag(swap.other_product.photo.key) %>
         <% elsif swap.other_product.category== 'Book' %>
-          <%= image_tag('book-placeholder.png', alt: other_product.title) %>
+          <%= image_tag('book-placeholder.png', alt: swap.other_product.title) %>
         <% else %>
-          <%= image_tag('puzzle-placeholder.png', alt: other_product.title) %>
+          <%= image_tag('puzzle-placeholder.png', alt: swap.other_product.title) %>
         <% end %>
       </div>
       <ul class="list-group list-group-flush">
