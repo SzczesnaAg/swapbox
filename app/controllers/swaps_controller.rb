@@ -30,8 +30,11 @@ class SwapsController < ApplicationController
   end
 
   def mark_as_read
-    @swap.notify_owner = false
-    @swap.notify_requester = false
+    if @swap.user_id == current_user.id
+      @swap.notify_requester = false
+    else
+      @swap.notify_owner = false
+    end
     @swap.save
   end
 
