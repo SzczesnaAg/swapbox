@@ -1,5 +1,5 @@
 class SwapsController < ApplicationController
-  before_action :set_swap, only: [:show, :choose_item, :mark_as_rejected, :mark_as_accepted, :mark_as_exchanged, :mark_as_canceled]
+  before_action :set_swap, only: [:show, :choose_item, :mark_as_rejected, :mark_as_accepted, :mark_as_exchanged, :mark_as_canceled, :mark_as_read]
 
   def create
     @product = Product.find(params[:product_id])
@@ -12,6 +12,7 @@ class SwapsController < ApplicationController
       elsif current_user.products.where(status: 0).count.positive?
         @product.status = "onhold"
         @product.save
+        @swap.notify_owner = true
         @swap.save!
         redirect_to my_dashboard_path, notice: "Your swap request has been successfully sent!"
       else
@@ -25,6 +26,13 @@ class SwapsController < ApplicationController
 
   def show
     @message = Message.new
+    mark_as_read
+  end
+
+  def mark_as_read
+    @swap.notify_owner = false
+    @swap.notify_requester = false
+    @swap.save
   end
 
   def mark_as_rejected
@@ -38,6 +46,7 @@ class SwapsController < ApplicationController
   end
 
   def choose_item
+    mark_as_read
     @swaps = Swap.where(user_id: current_user.id, status: 0)
     @products = @swap.user.products.available
     @my_products = Product.where(user_id: current_user.id, status: 0)
@@ -58,6 +67,7 @@ class SwapsController < ApplicationController
     @swap.other_product.status = "taken"
     @swap.other_product.save
     @swap.status = "accepted"
+    @swap.notify_requester = true
     @swap.save
     redirect_to my_dashboard_path, notice: "Congrats! You made a swap."
   end
