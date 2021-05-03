@@ -18,7 +18,6 @@ class PagesController < ApplicationController
     @swaps_accepted = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(status: 1) # accepted
     @swaps_rejected = Swap.where(user_id: current_user.id, status: 2) # rejected
     @swaps_requests_for_owner = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(status: 0)
-    @message = Message.new
   end
 
   def faq

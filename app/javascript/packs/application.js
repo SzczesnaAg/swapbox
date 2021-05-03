@@ -30,6 +30,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { fqaToggle } from '../plugins/faq';
 import { initSwapCable } from '../channels/swap_channel';
+import { scrollLastMessageIntoView } from '../plugins/scroll';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   fqaToggle();
   initSwapCable();
+  scrollLastMessageIntoView();
 });
