@@ -1,17 +1,19 @@
-<% @swaps_requests_for_owner.each do |swap| %>
-  <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
-    <div class="card-body">
-      <% if swap.product.photo.attached? %>
-        <%= cl_image_tag(swap.product.photo.key) %>
-      <% elsif swap.product.category== 'Book' %>
-        <%= image_tag('book-placeholder.png', alt: swap.product.title) %>
-      <% else %>
-        <%= image_tag('puzzle-placeholder.png', alt: swap.product.title) %>
-      <% end %>
+<div class="row">
+  <% @swaps_requests_for_owner.each do |swap| %>
+    <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
+      <div class="card-body">
+        <% if swap.product.photo.attached? %>
+          <%= cl_image_tag(swap.product.photo.key) %>
+        <% elsif swap.product.category== 'Book' %>
+          <%= image_tag('book-placeholder.png', alt: swap.product.title) %>
+        <% else %>
+          <%= image_tag('puzzle-placeholder.png', alt: swap.product.title) %>
+        <% end %>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">from <%= swap.product.user.first_name %></li>
+        <li class="list-group-item"><%= link_to 'Details', choose_item_to_swap_path(swap) %></li>
+      </ul>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">from <%= swap.product.user.first_name %></li>
-      <li class="list-group-item"><%= link_to 'Details', choose_item_to_swap_path(swap) %></li>
-    </ul>
-  </div>
-<% end %>
+  <% end %>
+</div>

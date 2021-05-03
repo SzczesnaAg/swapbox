@@ -1,18 +1,21 @@
 <div class="card-swap">
   <div class="card-header">
-    Details of the Swap request
+    <h4>Details of the Swap request</h4>
   </div>
   <div class="card-body">
     <% if @swap_possible == false %>
       <p class="card-text">Sorry, you can not accept this swap request, because you do not have enough available products. Please add a product or cancel one of your sent requests.</p>
       <%= link_to 'Back to my dashboard', my_dashboard_path %>
     <% else %>
-      <div class="card-text">
-        <h2><strong><%= @user %></strong></h2><p>  would like to take from you <strong><%= @swap_product %></strong></p>
-          <p>Please choose one of the products below and to proceed with the Swap</p>
+      <div class="">
+        <h5><strong><%= @user %></strong></h5>
+        <p>would like to take from you product: <%= @swap.product.category %> with title: <%= @swap_product %></p>
+        <p>Please choose one of the <%= @user %>'s products below and  confirm Spaw by clicking on Accept button.</p>
       </div>
     <% end %>
-    <p>If you are not interested</p>
-    <%= link_to 'Reject', reject_swap_path(@swap), method: :patch, class: "btn-swap btn-big"  %>
+    <div class="mt-4">
+      <p>If you are not interested</p>
+      <%= link_to 'Reject', reject_swap_path(@swap), method: :patch, class: "btn-swap btn-big"  %>
+    </div>
   </div>
 </div>

@@ -1,24 +1,44 @@
 <h1>Hi <%= @user.first_name %></h1>
 <div class="container">
-  <h2>Requests for You</h2>
-  <div class="row">
-    <%= render 'shared/swap_request_for_owner' %>
+  <div>
+    <% if @user.products.where(status: 1).count == 0 %>
+      <div>
+       <h2>You don't have new requests</h2>
+      </div>
+      <div>
+        <%= image_tag('my_dashboard_placeholder.png', alt: 'placeholder photo') %>
+      </div>
+    <% else %>
+      <h2>Requests for You</h2>
+      <div>
+        <%= render 'shared/swap_request_for_owner' %>
+      </div>
+    <% end %>
   </div>
 </div>
 
 <div class="container">
-  <h2>Accepted Swaps</h2>
   <div class="row">
-    <%= render 'shared/accepted_swaps' %>
+  <div class="col-6">
+    <div>
+      <h2>Accepted Swaps</h2>
+    </div>
+    <div class="row">
+      <%= render 'shared/accepted_swaps' %>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div>
+      <h2>Request you sent</h2>
+    </div>
+    <div class="row">
+      <%= render 'shared/swaps_requests' %>
+    </div>
+  </div>
   </div>
 </div>
 
-<div class="container">
-  <h2>Request you sent</h2>
-  <div class="row">
-    <%= render 'shared/swaps_requests' %>
-  </div>
-</div>
 
 <div class="container mb-3">
   <h2>All your available Products</h2>
