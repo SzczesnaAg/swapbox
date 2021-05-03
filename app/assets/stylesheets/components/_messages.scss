@@ -29,3 +29,13 @@
   color: $gray-500;
   margin: 3px 0;
 }
+
+.submit-control {
+  position: relative;
+  .btn-swap {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    min-height: 25px;
+  }
+}

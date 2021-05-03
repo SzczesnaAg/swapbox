@@ -13,14 +13,18 @@
           <% end %>
         </div>
 
-        <%= simple_form_for [ @swap, @message ] do |f| %>
-          <%= f.input :content, label: false, placeholder: "Type your message here..." %>
-        <% end %>
-    </div>
-
+          <%= simple_form_for [ @swap, @message ] do |f| %>
+            <div class="submit-control">
+              <%= f.input :content, label: false, placeholder: "Type your message here...", class: "submit-message" %>
+              <div class="submit">
+                <%= button_tag type: 'submit', class: "btn-swap" do %>
+                  <i class="fas fa-reply" aria-hidden="true"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
       </div>
-
-
+    </div>
   </div>
 </div>
 
