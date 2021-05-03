@@ -1,5 +1,5 @@
 class SwapsController < ApplicationController
-  before_action :set_swap, only: [:show, :mark_as_rejected, :mark_as_accepted]
+  before_action :set_swap, only: [:show, :choose_item, :mark_as_rejected, :mark_as_accepted, :mark_as_exchanged, :mark_as_canceled]
 
   def create
     @product = Product.find(params[:product_id])
@@ -27,10 +27,6 @@ class SwapsController < ApplicationController
     @message = Message.new
   end
 
-  def sent_requests
-    @swaps = Swap.where(user_id: current_user.id)
-  end
-
   def mark_as_rejected
     @product = @swap.product
     @product.status = "available"
@@ -42,12 +38,16 @@ class SwapsController < ApplicationController
   end
 
   def choose_item
-    @swap = Swap.find(params[:id])
+    @swaps = Swap.where(user_id: current_user.id, status: 0)
     @products = @swap.user.products.available
+    @my_products = Product.where(user_id: current_user.id, status: 0)
     @user = @swap.user.first_name
     @swap_product = @swap.product.title
-
-    authorize @swap
+    if @my_products.count >= @swaps.count
+      @swap_possible = true
+    else
+      @swap_possible = false
+    end
   end
 
   def mark_as_accepted
@@ -60,14 +60,35 @@ class SwapsController < ApplicationController
     @swap.status = "accepted"
     @swap.save
     redirect_to my_dashboard_path, notice: "Congrats! You made a swap."
-    authorize @swap
+  end
+
+  def mark_as_exchanged
+    @product = @swap.product
+    @other_product = @swap.other_product
+    if current_user.id == @product.user_id
+      @product.status = "exchanged"
+      @product.save
+    else
+      @other_product.status = "exchanged"
+      @other_product.save
+    end
+    if @product.status == @other_product.status
+      @swap.status = "exchanged"
+      @swap.save
+    end
+    redirect_to my_dashboard_path, notice: "You confirmed receival of the product."
+  end
+
+  def mark_as_canceled
+    @product = @swap.product
+    @product.status = "available"
+    @product.save
+    @swap.status = "canceled"
+    @swap.save
+    redirect_to my_dashboard_path, notice: "Your swap request has been canceled."
   end
 
   private
-
-  def swap_params
-    params.require(:swap).permit(:status, :note, :product_id, :user_id)
-  end
 
   def set_swap
     @swap = Swap.find(params[:id])

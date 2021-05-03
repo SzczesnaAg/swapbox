@@ -1,5 +1,5 @@
 class Product < ApplicationRecord
-  enum status: [:available, :onhold, :taken]
+  enum status: [:available, :onhold, :taken, :exchanged]
   validates :title, presence: true
   validates :city, presence: true
   validates :street, presence: true
