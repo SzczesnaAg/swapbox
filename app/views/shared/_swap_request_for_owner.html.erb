@@ -10,7 +10,11 @@
       <% end %>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">from <%= swap.user.first_name %></li>
+      <li class="list-group-item">
+        <% if swap.notify_owner == true %>
+          <i class="fas fa-bell"></i>
+        <% end %>
+        from <%= swap.user.first_name %></li>
       <li class="list-group-item"><%= link_to 'Details', choose_item_to_swap_path(swap) %></li>
     </ul>
   </div>
