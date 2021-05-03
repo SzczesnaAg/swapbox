@@ -37,6 +37,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_notifications
+    return if current_user.nil?
+
     @my_swap_requests = Swap.where(user_id: current_user.id, notify_requester: true)
     @my_products_swaps = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(notify_owner: true)
     @should_notify_current_user = @my_swap_requests.count.positive? || @my_products_swaps.count.positive?
