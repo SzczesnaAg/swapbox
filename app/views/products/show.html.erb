@@ -1,20 +1,40 @@
 <div class="container">
-  <div class="show-card">
-    <% if @product.photo.attached? %>
-      <%= cl_image_tag(@product.photo.key) %>
-    <% elsif @product.category== 'Book' %>
-      <%= image_tag('book-placeholder.png', alt: @product.title) %>
-    <% else %>
-      <%= image_tag('puzzle-placeholder.png', alt: @product.title) %>
-    <% end %>
-    <div class="card-bottom">
-      <div>
-        <h1><%= @product.title  %></h1>
-        <p><%= @product.description  %></p>
-        <p><i class="fas fa-map-marker-alt"></i> <%= @product.city %></p>
+  <div class="card-show mt-3">
+    <div class="row g-0">
+      <div class="col-md-4 product">
+        <% if @product.photo.attached? %>
+          <%= cl_image_tag(@product.photo.key) %>
+        <% elsif @product.category== 'Book' %>
+          <%= image_tag('book-placeholder.png', alt: @product.title) %>
+        <% else %>
+          <%= image_tag('puzzle-placeholder.png', alt: @product.title) %>
+        <% end %>
       </div>
-      <div class="card-right">
-        <%= link_to 'Swap', product_swaps_path(@product), method: :post, class: "btn-swap"  %>
+      <div class="col-md-8">
+        <div class="card-body mb-3">
+          <h3 class="card-title mb-3"><strong><%=  @product.title %></strong></h3>
+          <p class="card-text mb-5"><%= @product.description %></p>
+          <div class="d-flex" style="justify-content: space-between;">
+            <div>
+              <p>Owner</p>
+              <%= cl_image_tag @product.user.photo.attached? ? cl_image_path(@product.user.photo.key) : asset_path('user.png'), class: "avatar" %>
+              <p><%= @product.user.first_name%></p>
+            </div>
+            <div>
+              <p><i class="fas fa-map-marker-alt"></i> <%= @product.city %></p>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex" style="justify-content: center">
+          <%= link_to 'Swap', product_swaps_path(@product), method: :post, class: "btn-swap btn-big"  %>
+        </div>
+        <div class="d-flex mr-3" style="justify-content:flex-end">
+          <div>
+            <%= link_to products_path do %>
+              <i class="fas fa-arrow-left"></i>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
