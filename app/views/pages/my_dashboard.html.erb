@@ -20,9 +20,7 @@
   </div>
 </div>
 
-<div class="container">
+<div class="container mb-3">
   <h2>All your available Products</h2>
-  <div class="row">
-    <%= render 'shared/my_dashboard' %>
-  </div>
+  <%= render 'shared/my_dashboard', all_products: @products %>
 </div>

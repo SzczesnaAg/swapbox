@@ -3,8 +3,12 @@
     Details of the Swap request
   </div>
   <div class="card-body">
-    <h5 class="card-title"><%= @user %> would like to exchange products with you.</h5>
-    <p class="card-text">Choose a one product to proceed with the Swap for <%= @swap_product %></p>
+    <% if @swap_possible == false %>
+      <p class="card-text">Sorry, you can not accept this swap request, because you do not have enough products. Please add a product or cancel one of your sent requests.</p>
+      <%= link_to 'Back to my dashboard', my_dashboard_path %>
+    <% else %>
+      <p class="card-text">If you would like to exchange with <strong><%= @user %></strong> for <strong><%= @swap_product %></strong> please choose one of the products below to proceed with the Swap</p>
+    <% end %>
     <p>If you are not interested</p>
     <%= link_to 'Reject', reject_swap_path(@swap), method: :patch, class: "btn-swap"  %>
   </div>

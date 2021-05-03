@@ -3,15 +3,19 @@
     <% if swap.product.photo.attached? %>
       <%= cl_image_tag(swap.product.photo.key) %>
     <% elsif swap.product.category== 'Book' %>
-      <%= image_tag('book-placeholder.png', alt: product.title) %>
+      <%= image_tag('book-placeholder.png', alt: swap.product.title) %>
     <% else %>
-      <%= image_tag('puzzle-placeholder.png', alt: product.title) %>
+      <%= image_tag('puzzle-placeholder.png', alt: swap.product.title) %>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= swap.product.title %></h5>
       <p class="card-text">Type: <%= swap.product.category %></p>
       <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= swap.product.city %></p>
+      <% if policy(swap).mark_as_canceled? %>
+        <%= link_to canceled_swap_path(swap), method: :patch do %>
+          <i class="far fa-trash-alt"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>
-
