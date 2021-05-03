@@ -3,14 +3,9 @@
   padding-top: 1rem;
   overflow: scroll;
   max-height: calc(100vh - 66px - 65px - 71px);
-}
-
-#new_message {
-  padding: 1rem;
-  border-top: 1px solid $gray-200;
-
-  .form-group {
-    margin-bottom: 0;
+  text-align: left;
+  .me {
+    text-align: right;
   }
 }
 
