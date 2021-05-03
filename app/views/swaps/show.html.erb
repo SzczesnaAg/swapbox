@@ -1,10 +1,30 @@
-<h1>#<%= @swap.id %></h1>
-<div id="messages" data-swap-id="<%= @swap.id %>">
-  <% @swap.messages.each do |message| %>
-  <%= render 'messages/message', message: message  %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h1> Swap info</h1>
+    </div>
+
+    <div class="col-4">
+      <h3>Chat</h3>
+      <div class="show-card p-3">
+        <div id="messages" data-swap-id="<%= @swap.id %>">
+          <% @swap.messages.each do |message| %>
+          <%= render 'messages/message', message: message  %>
+          <% end %>
+        </div>
+
+        <%= simple_form_for [ @swap, @message ] do |f| %>
+          <%= f.input :content, label: false, placeholder: "Organize your swap!" %>
+        <% end %>
+    </div>
+
+      </div>
+
+
+  </div>
 </div>
 
-<%= simple_form_for [ @swap, @message ] do |f| %>
-  <%= f.input :content, label: false, placeholder: "Organize your swap!" %>
-<% end %>
+
+
+
+

@@ -1,21 +1,22 @@
 #messages {
-  padding: 0 1rem;
-  padding-top: 1rem;
+  padding: 10px;
   overflow: scroll;
   max-height: calc(100vh - 66px - 65px - 71px);
   text-align: left;
+  .message-container {
+    background-color: #FFF;
+    border-radius: 20px;
+    padding: 10px;
+    display: inline-block;
+  }
   .me {
     text-align: right;
+    .message-container {
+      background-color: $light-purple;
+    }
   }
 }
 
-.author {
-  span {
-    font-style: normal;
-    font-weight: bold;
-  }
-
-  small {
-    color: $gray-500;
-  }
+.small {
+  color: $gray-500;
 }
