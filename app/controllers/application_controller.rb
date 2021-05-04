@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :store_user_location!, if: :storable_location?
   before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
+  before_action :check_notifications
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :photo])
@@ -28,10 +29,18 @@ class ApplicationController < ActionController::Base
   end
 
   def storable_location?
-      request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
-    end
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
 
-    def store_user_location!
-      store_location_for(:user, request.fullpath)
-    end
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
+  end
+
+  def check_notifications
+    return if current_user.nil?
+
+    @my_swap_requests = Swap.where(user_id: current_user.id, notify_requester: true)
+    @my_products_swaps = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(notify_owner: true)
+    @should_notify_current_user = @my_swap_requests.count.positive? || @my_products_swaps.count.positive?
+  end
 end
