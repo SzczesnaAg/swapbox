@@ -6,7 +6,7 @@
     <%= simple_form_for @swap, url: accept_swap_path, method: :patch, wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
       <div class="row mt-2">
         <div class="container mb-3">
-          <h2>All <strong><%= @user %></strong> available Products</h2>
+          <h2><strong><%= @user %>'s</strong> available Products</h2>
           <%= render 'shared/carousel_choose_product', all_products: @swap.user.products.available %>
         </div>
       </div>
