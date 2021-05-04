@@ -10,3 +10,17 @@ h3 {
 .wrapper h2 {
   margin-top: 0;
 }
+
+@media screen and (max-width: 575px) {
+  .mobile {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 576px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}

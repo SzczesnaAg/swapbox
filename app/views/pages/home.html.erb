@@ -1,5 +1,5 @@
 <div class="banner" style="background-image: url(<%= asset_path 'Banner.png' %>)">
-  <div class="container">
+  <div class="container mobile">
     <div>
       <h1>Welcome to SwapBox</h1>
     </div>
@@ -8,9 +8,9 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container mobile">
   <h2>How it works</h2>
-  <div class="cards">
+  <div class="cards mobile">
     <div class="card">
       <%= image_tag 'sign-up.svg'%>
       <h3><%= link_to 'Sign up', new_user_registration_path %></h3>
@@ -36,9 +36,9 @@
   <%= link_to 'Start Swapping', products_path, class: "btn-swap"  %>
 </div>
 <div class="wrapper">
-  <div class="container">
+  <div class="container mobile">
     <h2>What are you looking for?</h2>
-    <div class="cards">
+    <div class="cards mobile">
       <div class="homepage-card puzzle-card">
         <%= link_to 'Puzzles', products_path(category:'Puzzle'), class: "btn-swap"  %>
       </div>

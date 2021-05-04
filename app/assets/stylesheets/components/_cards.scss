@@ -110,3 +110,25 @@
 .text-align-left {
   text-align: left;
 }
+
+@media screen and (max-width: 575px) {
+  .mobile {
+    .card {
+      margin: 10px auto;
+    }
+
+    .homepage-card {
+      width: 250px;
+      margin: 10px auto;
+    }
+  }
+}
+
+@media screen and (min-width: 576px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+
+}
+
