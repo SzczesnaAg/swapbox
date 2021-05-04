@@ -16,7 +16,7 @@
         <%= simple_form_for [ @swap, @message ] do |f| %>
           <div class="d-flex">
             <div class="submit-control">
-              <%= f.input :content, label: false, placeholder: "Type your message here...", class: "submit-message" %>
+              <%= f.input :content, label: false, placeholder: "Type your message...", class: "submit-message" %>
             </div>
             <div class="submit">
               <%= button_tag type: 'submit', class: "btn-swap" do %>
