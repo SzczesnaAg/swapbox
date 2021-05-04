@@ -6,12 +6,15 @@ class ProductsController < ApplicationController
 
     if params[:query].present?
       @products = policy_scope(Product).search_by(params[:query]).where(status: "available")
+      @count = @products.count
     else
       @products = policy_scope(Product).where(status: "available")
+      @count = @products.count
     end
 
     if params[:category].present?
       @products = @products.where(category:params[:category])
+      @count = @products.count
     end
 
     @markers = @products.geocoded.map do |product|
