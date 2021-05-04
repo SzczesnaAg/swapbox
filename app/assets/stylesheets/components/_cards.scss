@@ -9,6 +9,9 @@
   box-shadow: 3px 6px 10px rgba(0,0,0,0.1);
   width: 200px;
   padding: 20px;
+  h3 a {
+    color: #000;
+  }
 }
 
 .card img {
@@ -99,6 +102,7 @@
   text-align: center;
 }
 
+
 .card-body {
   color: black
 }
@@ -106,4 +110,12 @@
 .accepted {
   justify-content: space-around;
   align-items: center;
+}
+
+.fa-bell {
+  color: #bc0f0f;
+}
+
+.text-align-left {
+  text-align: left;
 }
