@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="inam" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% all_products.each_slice(3).with_index  do |products, index| %>
+            <div class="carousel-item <%= index==0 ? 'active' : ''%> ">
+              <div class="container">
+                <div class="row">
+                  <% products.each do |product| %>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-4 card-index card-dashboard">
+                      <% if product.photo.attached? %>
+                        <%= cl_image_tag(product.photo.key) %>
+                      <% elsif product.category== 'Book' %>
+                        <%= image_tag('book-placeholder.png', alt: product.title) %>
+                      <% else %>
+                        <%= image_tag('puzzle-placeholder.png', alt: product.title) %>
+                      <% end %>
+                      <div class="card-body">
+                        <% if product.category == 'Puzzle' %>
+                          <p class="card-text"><i class="fas fa-puzzle-piece"></i> <%= product.category %></p>
+                        <% else %>
+                          <p class="card-text"><i class="fas fa-book"></i></i> <%= product.category %></p>
+                        <% end %>
+                        <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= product.city %></p>
+                        <% if policy(product).destroy? %>
+                          <%= link_to product_path(product), method: :delete do %>
+                            <i class="far fa-trash-alt"></i>
+                          <% end %>
+                        <% end %>
+                        <% if policy(product).edit? %>
+                          <%= link_to edit_product_path(product) do %>
+                            <i class="far fa-edit"></i>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a href="#inam" class="carousel-control-prev" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a href="#inam" class="carousel-control-next" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -37,6 +37,10 @@ class SwapPolicy < ApplicationPolicy
     user == record.user
   end
 
+  def info?
+    true
+  end
+  
   def mark_as_read?
     true
   end
