@@ -1,11 +1,11 @@
 <div class="d-flex">
   <div class="ml-2">
-    <h2>Discover our offer</h2>
+    <h2>Discover our offers</h2>
   </div>
   <%= render 'shared/searchbar' %>
 </div>
 <p class="text-align-left">
-  <%= link_to "#{@count} Products available:", products_path %>
+  <%= link_to "#{@count} Offers available:", products_path %>
   <%= link_to products_path(category:'Book') do %>
     <%= @book_count %> <i class="fas fa-book"></i>
   <% end %> &
