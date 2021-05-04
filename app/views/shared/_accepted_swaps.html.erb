@@ -1,5 +1,5 @@
 <% @swaps_accepted.each do |swap| %>
-    <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3 card-index card-dashboard">
       <div class="card-header">You swaped</div>
       <div class="card-body">
         <% if swap.product.photo.attached? %>
@@ -16,7 +16,7 @@
         <% if swap.product.status == "exchanged" %>
           <li class="list-group-item">Receival confirmed</li>
         <% else %>
-          <li class="list-group-item"><%= link_to 'Confirm receival', exchanged_swap_path(swap), method: :patch %></li>
+          <li class="list-group-item"><%= link_to 'Confirm receival', exchanged_swap_path(swap), method: :patch%></li>
         <% end %>
       </ul>
     </div>
