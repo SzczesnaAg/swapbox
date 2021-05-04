@@ -1,45 +1,41 @@
 <h1>Hi <%= @user.first_name %></h1>
 <div class="container">
-  <div>
-    <% if @user.products.where(status: 1).count == 0 %>
-      <div>
-       <h2>You don't have new requests</h2>
-      </div>
-      <div>
+  <% if @user.products.where(status: 1).count == 0 %>
+    <div>
+      <h2>You don't have new requests</h2>
+    </div>
+    <div class="row">
+      <div class='col-4 col-sm-4 col-md-10 col-lg-12'>
         <%= image_tag('my_dashboard_placeholder.png', alt: 'placeholder photo')%>
       </div>
-    <% else %>
-      <h2>Requests for You</h2>
-      <div>
-        <%= render 'shared/swap_request_for_owner' %>
-      </div>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+    <h2>Requests for You</h2>
+    <div>
+      <%= render 'shared/swap_request_for_owner' %>
+    </div>
+  <% end %>
 </div>
-
 <div class="container">
   <div class="row">
-  <div class="col-6">
-    <div>
-      <h2>Accepted Swaps</h2>
+    <div class="col-6">
+      <div>
+        <h2>Accepted Swaps</h2>
+      </div>
+      <div class="row">
+        <%= render 'shared/accepted_swaps' %>
+      </div>
     </div>
-    <div class="row">
-      <%= render 'shared/accepted_swaps' %>
+    <div class="col-6">
+      <div>
+        <h2>Request you sent</h2>
+      </div>
+      <div class="row">
+        <%= render 'shared/swaps_requests' %>
+      </div>
     </div>
-  </div>
-
-  <div class="col-6">
-    <div>
-      <h2>Request you sent</h2>
-    </div>
-    <div class="row">
-      <%= render 'shared/swaps_requests' %>
-    </div>
-  </div>
   </div>
 </div>
-
-
 <div class="container mb-3">
   <h2>All your available Products</h2>
   <%= render 'shared/carousel_products', all_products: @products %>
