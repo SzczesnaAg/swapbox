@@ -14,8 +14,10 @@
           <% end %>
         </div>
         <%= simple_form_for [ @swap, @message ] do |f| %>
-          <div class="submit-control">
-            <%= f.input :content, label: false, placeholder: "Type your message here...", class: "submit-message" %>
+          <div class="d-flex">
+            <div class="submit-control">
+              <%= f.input :content, label: false, placeholder: "Type your message here...", class: "submit-message" %>
+            </div>
             <div class="submit">
               <%= button_tag type: 'submit', class: "btn-swap" do %>
                 <i class="fas fa-reply" aria-hidden="true"></i>
