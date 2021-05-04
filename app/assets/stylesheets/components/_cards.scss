@@ -9,6 +9,9 @@
   box-shadow: 3px 6px 10px rgba(0,0,0,0.1);
   width: 200px;
   padding: 20px;
+  h3 a {
+    color: #000;
+  }
 }
 
 .card img {
@@ -97,4 +100,8 @@
   padding: 20px;
   justify-content: center;
   text-align: center;
+}
+
+.text-align-left {
+  text-align: left;
 }

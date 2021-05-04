@@ -13,22 +13,23 @@
   <div class="cards">
     <div class="card">
       <%= image_tag 'sign-up.svg'%>
-      <h3>Sign up</h3>
+      <h3><%= link_to 'Sign up', new_user_registration_path %></h3>
       <p>Make an account or Login</p>
+      <p><%= link_to 'Login', new_user_session_path, class: 'btn-swap' %></p>
     </div>
     <div class="card">
       <%= image_tag 'pick-product.svg'%>
-      <h3>Upload</h3>
+      <h3><%= link_to 'Upload', new_product_path %></h3>
       <p>Pick a book or puzzle you're ready to part ways with</p>
     </div>
     <div class="card">
       <%= image_tag 'browse.svg'%>
-      <h3>Browse</h3>
+      <h3><%= link_to 'Browse', products_path %></h3>
       <p>Check out the selection of puzzles and books</p>
     </div>
     <div class="card">
       <%= image_tag 'request-swap.svg'%>
-      <h3>Swap</h3>
+      <h3><%= link_to 'Swap', products_path %></h3>
       <p>Request a product and if the owner accepts, set up a swap time and location</p>
     </div>
   </div>
