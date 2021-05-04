@@ -1,26 +1,41 @@
 #messages {
-  padding: 0 1rem;
-  padding-top: 1rem;
+  padding: 10px;
   overflow: scroll;
   max-height: calc(100vh - 66px - 65px - 71px);
+  text-align: left;
+  .message-container {
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: 5px 5px 5px 10px;
+    display: inline-block;
+    min-width: 80px;
+  }
+  .me {
+    text-align: right;
+    .message-container {
+      background-color: $light-purple;
+      padding: 5px 10px 5px 5px;
+    }
+  }
 }
 
-#new_message {
-  padding: 1rem;
-  border-top: 1px solid $gray-200;
-
-  .form-group {
+.message-container {
+  p {
     margin-bottom: 0;
   }
 }
 
-.author {
-  span {
-    font-style: normal;
-    font-weight: bold;
-  }
+.small {
+  color: $gray-500;
+  margin: 3px 0;
+}
 
-  small {
-    color: $gray-500;
+.submit-control {
+  position: relative;
+  .btn-swap {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    min-height: 25px;
   }
 }
