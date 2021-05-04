@@ -9,6 +9,7 @@
   box-shadow: 3px 6px 10px rgba(0,0,0,0.1);
   width: 200px;
   padding: 20px;
+  margin-right: 20px;
   h3 a {
     color: #000;
   }
@@ -28,6 +29,7 @@
 
 .puzzle-card {
   background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), asset-url('puzzle.jpg');
+  margin-right: 20px;
 }
 
 .book-card {
@@ -122,13 +124,5 @@
       margin: 10px auto;
     }
   }
-}
-
-@media screen and (min-width: 576px) {
-
-}
-
-@media screen and (min-width: 1200px) {
-
 }
 

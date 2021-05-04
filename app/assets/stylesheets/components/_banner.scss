@@ -2,26 +2,15 @@
   background-size: cover;
   background-position: center;
   height: 500px;
-  padding: 200px 0;
+  padding: 80px 0;
   h1 {
     color: #fff;
     font-weight: bold;
   }
 }
+
 @media screen and (max-width: 575px) {
-  #map {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 576px) {
-  #map {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  #map {
-    display: block;
+  .banner {
+    padding: 40px 0;
   }
 }
