@@ -25,6 +25,13 @@ class SwapsController < ApplicationController
 
   def show
     @message = Message.new
+    @user = @swap.user
+    @other_user = @swap.product.user
+    if current_user == @user
+      @chat_user = @other_user
+    elsif current_user == @other_user
+      @chat_user = @user
+    end
   end
 
   def mark_as_rejected
