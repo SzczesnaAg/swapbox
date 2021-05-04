@@ -21,6 +21,11 @@
             <%= link_to "My dashbord", my_dashboard_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
+          <% if @should_notify_current_user == true %>
+            <li class="nav-item ">
+              <i class="fas fa-bell"></i>
+            </li>
+          <% end %>
         </li>
       <% else %>
         <li class="nav-item">

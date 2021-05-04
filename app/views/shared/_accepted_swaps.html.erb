@@ -23,7 +23,11 @@
 <% end %>
 <% @swaps_requests_accepted.each do |swap| %>
   <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-index card-dashboard">
-      <div class="card-header">You swaped</div>
+      <div class="card-header">You swaped
+        <% if swap.notify_requester == true %>
+          <i class="fas fa-bell"></i>
+        <% end %>
+      </div>
       <div class="card-body">
         <% if swap.other_product.photo.attached? %>
           <%= cl_image_tag(swap.other_product.photo.key) %>
