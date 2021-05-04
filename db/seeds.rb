@@ -4,12 +4,32 @@ require 'open-uri'
 require 'nokogiri'
 
 puts("Cleaning up database...")
+Message.destroy_all
+Swap.destroy_all
 Product.destroy_all
 User.destroy_all
 puts("database cleaned")
 
-def fetch_puzzle_urls
-  url = "https://www.seriouspuzzles.com/jigsaw-puzzles/"
+puts("Winter is coming")
+sansa = User.new(email: "sansa@north.com", last_name: "Stark", first_name: "Sansa", password: "123456")
+sansa.photo.attach(io: File.open(Rails.root.join("app/assets/images/sansa.png")), filename: "sansa.png")
+sansa.save!
+
+arya = User.new(email: "arya@north.com", last_name: "Stark", first_name: "Arya", password: "123456")
+arya.photo.attach(io: File.open(Rails.root.join("app/assets/images/arya.png")), filename: "arya.png")
+arya.save!
+
+jon = User.new(email: "jon@north.com", last_name: "Stark", first_name: "Jon", password: "123456")
+jon.photo.attach(io: File.open(Rails.root.join("app/assets/images/jon.png")), filename: "jon.png")
+jon.save!
+
+robb = User.new(email: "robb@north.com", last_name: "Stark", first_name: "Robb", password: "123456")
+robb.photo.attach(io: File.open(Rails.root.join("app/assets/images/robb.png")), filename: "robb.png")
+robb.save!
+
+puts ("The North remembers")
+
+def fetch_puzzle_urls(url)
   html_file = open(url).read
   html_doc = Nokogiri::HTML(html_file)
   puzzles = []
@@ -46,21 +66,24 @@ def scrape_puzzle(url, address)
     street: address[:street],
     zipcode: address[:zipcode],
     city: address[:city],
-    user: User.first
+    user: User.all.sample
     )
   file = URI.open(image)
   product.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
   product.save!
 end
 
-urls = fetch_puzzle_urls
+url_one = fetch_puzzle_urls("https://www.seriouspuzzles.com/jigsaw-puzzles/")
+url_two = fetch_puzzle_urls("https://www.seriouspuzzles.com/jigsaw-puzzles/?sort=bestselling&page=2")
 
-user = User.create!(email: "sansa@north.com", last_name: "Stark", first_name: "Sansa", password: "123456")
-user = User.create!(email: "arya@north.com", last_name: "Stark", first_name: "Arya", password: "123456")
 addresses = get_addresses
 book_addresses = addresses.reverse
 
-puzzles = urls.each_with_index do |url, index|
+puzzles = url_one.each_with_index do |url, index|
+  scrape_puzzle(url, addresses[index])
+end
+
+puzzles = url_two.each_with_index do |url, index|
   scrape_puzzle(url, addresses[index])
 end
 
@@ -86,7 +109,7 @@ def scrape_books(index, address)
   street: address[:street],
   zipcode: address[:zipcode],
   city: address[:city],
-  user: User.last
+  user: User.all.sample
   )
   file = URI.open(image)
   product.photo.attach(io: file, filename: 'nes.jpg', content_type: 'image/jpg')
@@ -94,7 +117,7 @@ def scrape_books(index, address)
 end
 
 books = book_addresses.each_with_index do |address, index|
-  scrape_books(index, address) unless index > 20
+  scrape_books(index, address) unless index > 40
 end
 
 puts "Books created"
