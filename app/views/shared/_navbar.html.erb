@@ -23,7 +23,9 @@
           </div>
           <% if @should_notify_current_user == true %>
             <li class="nav-item ">
-              <i class="fas fa-bell"></i>
+              <%= link_to my_dashboard_path do %>
+                <i class="fas fa-bell"></i>
+              <% end %>
             </li>
           <% end %>
         </li>
