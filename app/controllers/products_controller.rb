@@ -7,14 +7,17 @@ class ProductsController < ApplicationController
     if params[:query].present?
       @products = policy_scope(Product).search_by(params[:query]).where(status: "available")
       @count = @products.count
+      count_products(@products)
     else
       @products = policy_scope(Product).where(status: "available")
       @count = @products.count
+      count_products(@products)
     end
 
     if params[:category].present?
       @products = @products.where(category:params[:category])
       @count = @products.count
+      count_products(@products)
     end
 
     @markers = @products.geocoded.map do |product|
@@ -79,5 +82,20 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
     authorize @product
+  end
+
+  def count_products(products)
+    @puzzles = []
+    @books = []
+    products.each do |product|
+      case product.category
+      when "Puzzle"
+        @puzzles << product
+      else
+        @books << product
+      end
+    end
+    @book_count = @books.count
+    @puzzle_count = @puzzles.count
   end
 end
