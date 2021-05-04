@@ -1,0 +1,32 @@
+
+<div class="card-product">
+  <% if @swap.product.photo.attached? %>
+    <%= cl_image_tag(@swap.product.photo.key) %>
+  <% elsif @swap.product.category== 'Book' %>
+    <%= image_tag('book-placeholder.png', alt: @swap.product.title) %>
+  <% else %>
+    <%= image_tag('puzzle-placeholder.png', alt: @swap.product.title) %>
+  <% end %>
+  <div class="card-product-infos">
+    <h2>Title: <%= @swap.product.title %></h2>
+    <p>Owner: <%= @swap.product.user.first_name %> <%= @swap.product.user.last_name %></p>
+    <p>Address: <%= @swap.product.address %></p>
+  </div>
+</div>
+<div class="exchange-icon" >
+  <%= image_tag "exchange.png" %>
+</div>
+<div class="card-product">
+  <% if @swap.other_product.photo.attached? %>
+    <%= cl_image_tag(@swap.other_product.photo.key) %>
+  <% elsif @swap.other_product.category== 'Book' %>
+    <%= image_tag('book-placeholder.png', alt: @swap.other_product.title) %>
+  <% else %>
+    <%= image_tag('puzzle-placeholder.png', alt: @swap.other_product.title) %>
+  <% end %>
+  <div class="card-product-infos">
+    <h2>Title: <%= @swap.other_product.title %></h2>
+    <p>Owner: <%= @swap.other_product.user.first_name %> <%= @swap.other_product.user.last_name %></p>
+    <p>Address: <%= @swap.other_product.address %></p>
+  </div>
+</div>
