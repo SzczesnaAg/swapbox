@@ -4,9 +4,17 @@
   </div>
   <%= render 'shared/searchbar' %>
 </div>
+<p class="text-align-left">
+  <%= link_to "#{@count} Products available:", products_path %>
+  <%= link_to products_path(category:'Book') do %>
+    <%= @book_count %> <i class="fas fa-book"></i>
+  <% end %> &
+  <%= link_to products_path(category:'Puzzle') do %>
+    <%= @puzzle_count %> <i class="fas fa-puzzle-piece"></i>
+  <% end %>
+</p>
 <div class="d-flex">
   <div class="container ml-1">
-    <p class="text-align-left"><%= @count %> Products available: <%= @book_count %> <i class="fas fa-book"></i> & <%= @puzzle_count %> <i class="fas fa-puzzle-piece"></i></p>
     <%= render 'shared/index' %>
   </div>
   <div id="map" style="width: 50%; height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
