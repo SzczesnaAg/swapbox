@@ -17,7 +17,11 @@
                         <%= image_tag('puzzle-placeholder.png', alt: product.title) %>
                       <% end %>
                       <div class="card-body">
-                        <p class="card-text">Category: <%= product.category %></p>
+                        <% if product.category == 'Puzzle' %>
+                          <p class="card-text"><i class="fas fa-puzzle-piece"></i> <%= product.category %></p>
+                        <% else %>
+                          <p class="card-text"><i class="fas fa-book"></i></i> <%= product.category %></p>
+                        <% end %>
                         <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= product.city %></p>
                         <% if policy(product).destroy? %>
                           <%= link_to product_path(product), method: :delete do %>

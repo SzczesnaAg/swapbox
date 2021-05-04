@@ -88,6 +88,13 @@ class SwapsController < ApplicationController
     redirect_to my_dashboard_path, notice: "Your swap request has been canceled."
   end
 
+  def info
+    @swap = Swap.find(params[:id])
+    @swaps = Swap.where(user_id: current_user.id, status: 0)
+    @product = Product.find(params[:product_id])
+    authorize @swap
+  end
+
   private
 
   def set_swap

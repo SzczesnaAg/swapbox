@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   resources :products do
     resources :swaps, only: [:create]
   end
+
+  get 'swaps/:id/choose_item/products/:product_id', to: 'swaps#info', as: :product_info
 end

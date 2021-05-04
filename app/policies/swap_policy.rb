@@ -36,4 +36,8 @@ class SwapPolicy < ApplicationPolicy
   def mark_as_canceled?
     user == record.user
   end
+
+  def info?
+    true
+  end
 end

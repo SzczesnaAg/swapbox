@@ -2,14 +2,13 @@
   <div class="d-flex justify-content-center">
     <%= render 'shared/choose_item_info' %>
   </div>
-
-<% if @swap_possible == true %>
+  <% if @swap_possible == true %>
     <%= simple_form_for @swap, url: accept_swap_path, method: :patch, wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
       <div class="row mt-2">
-       <div class="container mb-3">
-         <h2>All <strong><%= @user %></strong> available Products</h2>
-         <%= render 'shared/carousel_choose_product', all_products: @swap.user.products.available %>
-       </div>
+        <div class="container mb-3">
+          <h2>All <strong><%= @user %></strong> available Products</h2>
+          <%= render 'shared/carousel_choose_product', all_products: @swap.user.products.available %>
+        </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">
         <div class="form-actions">
@@ -18,4 +17,8 @@
       </div>
     <% end %>
   <% end %>
+  <div class="mt-4">
+    <h4>If you are not interested</h4>
+    <%= link_to 'Reject', reject_swap_path(@swap), method: :patch, class: "btn-swap"  %>
+  </div>
 </div>
