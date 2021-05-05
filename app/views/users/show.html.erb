@@ -7,12 +7,26 @@
     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
       <div class="p-3" id="review-box">
         <h4> Reviews: <%= @reviews.count %> </h4>
+        <p> Rating:
+          <small>
+            <% count = 0 %>
+            <% 5.times do %>
+              <% if @avg_rating > count %>
+                <i class="fas fa-star"></i>
+              <% else %>
+                <i class="far fa-star"></i>
+              <% end %>
+              <% count += 1 %>
+            <% end %>
+          </small>
+        </p>
         <%= simple_form_for [ @user, @review ] do |f| %>
-          <%= f.input :content %>
-          <%= f.input :rating, collection: 0..5 %>
+          <%= f.input :content, label: 'Write your Review', placeholder: "How was your experience with #{@user.first_name}?" %>
+          <%= f.input :rating, label: 'Give a Rating', collection: 0..5 %>
           <%= f.submit "Submit a Review", class: "btn-swap" %>
         <% end %>
         <div class="reviews">
+          <h5>What others had to say about <%= @user.first_name %></h5>
           <% @user.reviews.each do |review| %>
             <li class="list-group-item">
               <small>
@@ -35,8 +49,5 @@
     </div>
   </div>
 </div>
-
-
-
 
 

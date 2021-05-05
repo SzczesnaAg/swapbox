@@ -7,5 +7,10 @@ class UsersController < ApplicationController
     @review = Review.new
     @reviews = Review.where(user: @user)
     @products = Product.where(user_id: @user.id, status: 0)
+
+    @ratings = @reviews.map do |i|
+      i.rating
+    end
+    @avg_rating = (@ratings.sum / @reviews.count)
   end
 end

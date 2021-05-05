@@ -10,10 +10,11 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     authorize @review
     @review.user = @user
-
-    @review.save
-
-    redirect_to @user, notice: "Review was successfully created!"
+    if @review.save
+      redirect_to @user, notice: "Review was successfully created!"
+    else
+      render :new
+    end
   end
 
   private
