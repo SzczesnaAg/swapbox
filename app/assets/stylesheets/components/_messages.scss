@@ -30,7 +30,14 @@
   margin: 3px 0;
 }
 
-.submit-message {
-  flex-grow: 1;
+.submit-btn {
+  align-self: flex-end;
 }
 
+.flex {
+  display: flex;
+  justify-content: space-between;
+  .form-group {
+    flex-grow: 1;
+  }
+}

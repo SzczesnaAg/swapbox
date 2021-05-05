@@ -14,10 +14,10 @@
           <% end %>
         </div>
         <%= simple_form_for [ @swap, @message ] do |f| %>
-          <div class="d-flex">
-            <%= f.text_area :content, label: false, placeholder: "Type your message...", input_html: { autocomplete: "off" }, class: "submit-message" %>
+          <div class="flex">
+            <%= f.input :content, label: false, placeholder: "Type your message...", input_html: { autocomplete: "off" }, class: "submit-message" %>
             <div class="submit-btn">
-              <%= button_tag type: 'submit', class: "btn-swap btn-swap-chat" do %>
+              <%= button_tag type: 'submit', class: "btn-swap" do %>
                 <i class="fas fa-reply" aria-hidden="true"></i>
               <% end %>
             </div>
