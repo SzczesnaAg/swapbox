@@ -9,7 +9,7 @@
         <%= image_tag('puzzle-placeholder.png', alt: product.title) %>
       <% end %>
       <div class="card-body card-index-bottom">
-        <h5 class="card-title"><%= link_to product.title, product_path(product.id) %></h5>
+        <h5 class="card-title"><strong><%= link_to product.title, product_path(product.id) %></strong></h5>
         <div>
           <% if product.category == 'Puzzle' %>
             <p class="card-text"><i class="fas fa-puzzle-piece"></i> <%= product.category %></p>
