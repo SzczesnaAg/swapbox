@@ -1,5 +1,5 @@
 <% @swaps_accepted.each do |swap| %>
-    <div class="col-12 col-sm-12 col-md-4 col-lg-3 card-index card-dashboard">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3 card-dashboard">
       <div class="card-header">You swapped</div>
       <div class="card-body">
         <% if swap.product.photo.attached? %>
@@ -22,7 +22,7 @@
     </div>
 <% end %>
 <% @swaps_requests_accepted.each do |swap| %>
-    <div class="col-12 col-sm-12 col-md-4 col-lg-3 card-index card-dashboard">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-3 card-dashboard">
       <div class="card-header">You swapped
         <% if swap.notify_requester == true %>
           <i class="fas fa-bell"></i>
