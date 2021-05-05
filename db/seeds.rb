@@ -4,6 +4,7 @@ require 'open-uri'
 require 'nokogiri'
 
 puts("Cleaning up database...")
+Review.destroy_all
 Message.destroy_all
 Swap.destroy_all
 Product.destroy_all
