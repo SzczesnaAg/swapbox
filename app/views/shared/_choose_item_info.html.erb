@@ -1,7 +1,4 @@
 <div class="card-swap">
-  <div class="card-header">
-    <h4>Swap request</h4>
-  </div>
   <div class="card-body">
     <% if @swap_possible == false %>
       <p class="card-text">Sorry, you cannot accept this swap request, because you do not have available products. Please add a product or cancel one of your swap requests.</p>
@@ -9,7 +6,7 @@
     <% else %>
       <div class="">
         <h4><strong><%= @user %></strong></h4>
-        <p>would like to swap your <%= @swap.product.category %>: <%= @swap_product %></p>
+        <p>would like to swap your <%= @swap.product.category %>: <strong><%= @swap_product %></strong></p>
         <p>Please choose one of <%= @user %>'s products below and accept the Swap.</p>
       </div>
     <% end %>
