@@ -61,6 +61,7 @@
   padding: 0;
   border-radius: 2px;
   background: white;
+  height: 436px;
 }
 
 .card-index img {
@@ -69,6 +70,12 @@
   object-fit: cover;
 }
 
+.card-index-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 236px;
+}
 
 .card-dashboard img {
   height: 150px;
@@ -99,7 +106,6 @@
   justify-content: center;
   text-align: center;
 }
-
 
 .card-body {
   color: black
