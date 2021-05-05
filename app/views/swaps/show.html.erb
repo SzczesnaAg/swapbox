@@ -15,11 +15,9 @@
         </div>
         <%= simple_form_for [ @swap, @message ] do |f| %>
           <div class="d-flex">
-            <div class="submit-control">
-              <%= f.text_area :content, label: false, placeholder: "Type your message...", input_html: { autocomplete: "off" }, class: "submit-message" %>
-            </div>
-            <div class="submit">
-              <%= button_tag type: 'submit', class: "btn-swap" do %>
+            <%= f.text_area :content, label: false, placeholder: "Type your message...", input_html: { autocomplete: "off" }, class: "submit-message" %>
+            <div class="submit-btn">
+              <%= button_tag type: 'submit', class: "btn-swap btn-swap-chat" do %>
                 <i class="fas fa-reply" aria-hidden="true"></i>
               <% end %>
             </div>
