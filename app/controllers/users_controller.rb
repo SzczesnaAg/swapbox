@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @ratings = @reviews.map do |i|
       i.rating
     end
-    @avg_rating = (@ratings.sum / @reviews.count)
+    if @ratings.sum > 0
+      @avg_rating = (@ratings.sum / @reviews.count)
+    else
+      @avg_rating = 0
+    end
   end
 end
