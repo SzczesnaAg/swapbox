@@ -11,7 +11,7 @@
         <% end %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">with <%= swap.other_product.user.first_name %></li>
+        <li class="list-group-item">with <%= link_to swap.other_product.user.first_name, user_path(swap.other_product.user) %></li>
         <li class="list-group-item"><%= link_to 'View Details &Chat', swap_path(swap) %></li>
         <% if swap.product.status == "exchanged" %>
           <li class="list-group-item">Receival confirmed</li>
@@ -38,7 +38,7 @@
         <% end %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">with <%= swap.product.user.first_name %></li>
+        <li class="list-group-item">with <%= link_to swap.product.user.first_name, user_path(swap.product.user) %></li>
         <li class="list-group-item"><%= link_to 'View Details &Chat', swap_path(swap) %></li>
         <% if swap.other_product.status == "exchanged" %>
           <li class="list-group-item">Receival confirmed</li>

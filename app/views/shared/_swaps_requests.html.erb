@@ -11,7 +11,7 @@
     <% end %>
   </div>
     <div class="card-body">
-      <p>from <%= swap.product.user.first_name %></p>
+      <p>from <%= link_to swap.product.user.first_name, user_path(swap.product.user) %></p>
       <p class="card-text">Category: <%= swap.product.category %></p>
       <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= swap.product.city %></p>
       <% if policy(swap).mark_as_canceled? %>
