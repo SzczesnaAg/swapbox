@@ -1,33 +1,40 @@
 <div class="container">
+  <h1 class="my-3"><%= @user.first_name %> <%= @user.last_name %> </h1>
   <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-8">
-      <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
-      <%= render 'shared/carousel_products', all_products: @products %>
+      <%= render 'shared/index', all_products: @products %>
     </div>
     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-      <div class="card-show p-3">
+      <div class="p-3" id="review-box">
         <h4> Reviews: <%= @reviews.count %> </h4>
-        <div class="reviews">
-          <% @reviews.each do |review| %>
-            <div class="review-container">
-              <p><%= review.content %></p>
-              <p><%= review.rating %></p>
-              <div class="small"><%= review.created_at.strftime("%a %b %e at %l:%M%p") %></div>
-            </div>
-          <% end %>
-        </div>
-
         <%= simple_form_for [ @user, @review ] do |f| %>
           <%= f.input :content %>
           <%= f.input :rating, collection: 0..5 %>
-          <%= f.submit "Submit review", class: "btn-swap" %>
+          <%= f.submit "Submit a Review", class: "btn-swap" %>
         <% end %>
+        <div class="reviews">
+          <% @user.reviews.each do |review| %>
+            <li class="list-group-item">
+              <small>
+                <% count = 0 %>
+                <% 5.times do %>
+                  <% if review.rating > count %>
+                    <i class="fas fa-star"></i>
+                  <% else %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                  <% count += 1 %>
+                <% end %>
+              </small>
+              <p><%= review.content %></p>
+              <div class="small"><%= review.created_at.strftime("%a %b %e at %l:%M%p") %></div>
+            </li>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-
 
 
 

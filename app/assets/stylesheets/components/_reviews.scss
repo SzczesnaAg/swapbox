@@ -9,9 +9,17 @@
 
 .review-container {
   background-color: #FFF;
-  border-radius: 10px;
   padding: 5px 5px 5px 10px;
   display: inline-block;
   margin-bottom: 5px;
   width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 2px;
+}
+
+#review-box {
+  position: sticky;
+  top: 0;
+  border: 2px solid rgba(0,0,0,0.1);
+  box-shadow: 3px 6px 10px rgba(0,0,0,0.1);
 }
