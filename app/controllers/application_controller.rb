@@ -49,6 +49,13 @@ class ApplicationController < ActionController::Base
 
     @messages_on_my_swaps = Message.joins(:swap).where("swaps.user_id = ?", current_user.id) & Message.where(notify_message_owner: true)
     @messages_on_my_products = Message.joins(swap: [:product]).where("products.user_id = ?", current_user.id) & Message.where(notify_message_receiver: true)
+    @swaps_with_new_messages = []
+    @messages_on_my_swaps.each do |message|
+      @swaps_with_new_messages.push(message.swap_id)
+    end
+    @messages_on_my_products.each do |message|
+      @swaps_with_new_messages.push(message.swap_id)
+    end
 
     @new_message = @messages_on_my_swaps.count.positive? || @messages_on_my_products.count.positive?
   end
