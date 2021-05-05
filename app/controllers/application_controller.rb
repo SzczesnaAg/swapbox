@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
-  before_action :check_notifications
+  before_action :check_notifications, :check_messages_notifications
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :photo])
@@ -42,5 +42,14 @@ class ApplicationController < ActionController::Base
     @my_swap_requests = Swap.where(user_id: current_user.id, notify_requester: true)
     @my_products_swaps = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(notify_owner: true)
     @should_notify_current_user = @my_swap_requests.count.positive? || @my_products_swaps.count.positive?
+  end
+
+  def check_messages_notifications
+    return if current_user.nil?
+
+    @messages_on_my_swaps = Message.joins(:swap).where("swaps.user_id = ?", current_user.id) & Message.where(notify_message_owner: true)
+    @messages_on_my_products = Message.joins(swap: [:product]).where("products.user_id = ?", current_user.id) & Message.where(notify_message_receiver: true)
+
+    @new_message = @messages_on_my_swaps.count.positive? || @messages_on_my_products.count.positive?
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_03_155036) do
+ActiveRecord::Schema.define(version: 2021_05_05_081626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2021_05_03_155036) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "notify_message_owner", default: false
+    t.boolean "notify_message_receiver", default: false
     t.index ["swap_id"], name: "index_messages_on_swap_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -57,9 +59,9 @@ ActiveRecord::Schema.define(version: 2021_05_03_155036) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
     t.float "latitude"
     t.float "longitude"
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

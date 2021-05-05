@@ -33,8 +33,20 @@ class SwapsController < ApplicationController
     elsif current_user == @other_user
       @chat_user = @user
     end
-
     mark_as_read
+    mark_as_read_message
+  end
+
+  def mark_as_read_message
+    @swap_messages = Message.where(swap_id: @swap.id)
+    @my_messages = []
+    @swap_messages.each do |message|
+      if message.user_id != current_user.id
+        message.notify_message_receiver = false
+        message.notify_message_owner = false
+        message.save
+      end
+    end
   end
 
   def mark_as_read
