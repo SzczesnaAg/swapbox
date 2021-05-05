@@ -1,0 +1,17 @@
+.reviews {
+  padding: 10px;
+  overflow: scroll;
+  max-height: calc(100vh - 66px - 65px - 71px);
+  h4 {
+    text-align: center;
+  }
+}
+
+.review-container {
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 5px 5px 5px 10px;
+  display: inline-block;
+  margin-bottom: 5px;
+  width: 100%;
+}

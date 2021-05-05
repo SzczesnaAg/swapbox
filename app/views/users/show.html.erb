@@ -1,14 +1,35 @@
-<h1><%= @user.first_name %> <%= @user.last_name %> </h1>
-<p>Check out what others have you said:</p>
-<p> Reviews: <%= @reviews.count %> </p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-8">
+      <h1><%= @user.first_name %> <%= @user.last_name %> </h1>
+      <%= render 'shared/carousel_products', all_products: @products %>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+      <div class="card-show p-3">
+        <h4> Reviews: <%= @reviews.count %> </h4>
+        <div class="reviews">
+          <% @reviews.each do |review| %>
+            <div class="review-container">
+              <p><%= review.content %></p>
+              <p><%= review.rating %></p>
+              <div class="small"><%= review.created_at.strftime("%a %b %e at %l:%M%p") %></div>
+            </div>
+          <% end %>
+        </div>
 
-<%= simple_form_for [ @user, @review ] do |f| %>
-  <%= f.input :content %>
-  <%= f.input :rating, collection: 0..5 %>
-  <%= f.submit "Submit review", class: "btn-swap" %>
-<% end %>
+        <%= simple_form_for [ @user, @review ] do |f| %>
+          <%= f.input :content %>
+          <%= f.input :rating, collection: 0..5 %>
+          <%= f.submit "Submit review", class: "btn-swap" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% @reviews.each do |review| %>
-  <p><%= review.content %></p>
-  <p><%= review.rating %></p>
-<% end %>
+
+
+
+
+
+
