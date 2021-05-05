@@ -40,8 +40,12 @@ class SwapPolicy < ApplicationPolicy
   def info?
     true
   end
-  
+
   def mark_as_read?
+    true
+  end
+
+  def mark_messages_as_read?
     true
   end
 end

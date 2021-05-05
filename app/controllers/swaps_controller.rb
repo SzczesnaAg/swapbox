@@ -1,5 +1,5 @@
 class SwapsController < ApplicationController
-  before_action :set_swap, only: [:show, :choose_item, :mark_as_rejected, :mark_as_accepted, :mark_as_exchanged, :mark_as_canceled, :mark_as_read]
+  before_action :set_swap, only: [:show, :choose_item, :mark_as_rejected, :mark_as_accepted, :mark_as_exchanged, :mark_as_canceled, :mark_as_read, :mark_messages_as_read]
 
   def create
     @product = Product.find(params[:product_id])
@@ -34,10 +34,10 @@ class SwapsController < ApplicationController
       @chat_user = @user
     end
     mark_as_read
-    mark_as_read_message
+    mark_messages_as_read
   end
 
-  def mark_as_read_message
+  def mark_messages_as_read
     @swap_messages = Message.where(swap_id: @swap.id)
     @my_messages = []
     @swap_messages.each do |message|

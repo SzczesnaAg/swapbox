@@ -31,6 +31,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { fqaToggle } from '../plugins/faq';
 import { initSwapCable } from '../channels/swap_channel';
 import { scrollLastMessageIntoView } from '../plugins/scroll';
+import { InitNotificationMessages } from '../plugins/notification_messages';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -40,4 +41,5 @@ document.addEventListener('turbolinks:load', () => {
   fqaToggle();
   initSwapCable();
   scrollLastMessageIntoView();
+  InitNotificationMessages();
 });
