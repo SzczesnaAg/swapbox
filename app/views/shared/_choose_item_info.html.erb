@@ -8,7 +8,7 @@
       <%= link_to 'Back to my dashboard', my_dashboard_path %>
     <% else %>
       <div class="">
-        <h5><strong><%= @user %></strong></h5>
+        <h4><strong><%= @user %></strong></h4>
         <p>would like to swap your <%= @swap.product.category %>: <%= @swap_product %></p>
         <p>Please choose one of <%= @user %>'s products below and accept the Swap.</p>
       </div>
