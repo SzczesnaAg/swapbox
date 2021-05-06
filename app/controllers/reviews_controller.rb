@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to @user, notice: "Review was successfully created!"
     else
-      render :new
+      redirect_to @user, notice: "Review not created. Please fill out both fields!"
     end
   end
 
