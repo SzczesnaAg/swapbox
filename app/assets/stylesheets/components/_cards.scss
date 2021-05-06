@@ -133,7 +133,6 @@ img {
   align-items: center;
 }
 
-
 .text-align-left {
   text-align: left;
   margin-left: 10px;
@@ -182,6 +181,13 @@ img {
   background: white;
 }
 
+
+.notify {
+  background: $dark-purple;
+  color: white;
+}
+
 .choose a {
   color: black;
 }
+

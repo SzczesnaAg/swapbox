@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
           lat: product.latitude,
           lng: product.longitude,
           infoWindow: render_to_string(partial: "info_window", locals: { product: product }),
-          image_url: helpers.asset_url('book-black.png')
+          image_url: helpers.asset_url('book.png')
         }
       else
         {
