@@ -1,10 +1,6 @@
+<%= render 'shared/back_arrow' %>
 <div class="container">
   <h1 class="my-3"><%= @user.first_name %> <%= @user.last_name %> </h1>
-  <div>
-    <%= link_to :back do %>
-      <i class="fas fa-arrow-left"></i>
-    <% end %>
-  </div>
   <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-7">
       <%= render 'shared/index', all_products: @products %>
