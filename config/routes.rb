@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch 'swaps/:id/accept', to: 'swaps#mark_as_accepted', as: :accept_swap
   patch 'swaps/:id/exchanged', to: 'swaps#mark_as_exchanged', as: :exchanged_swap
   patch 'swaps/:id/canceled', to: 'swaps#mark_as_canceled', as: :canceled_swap
+  patch 'swaps/:id/mark_messages_as_read', to: 'swaps#mark_messages_as_read'
 
   get 'faq', to: 'pages#faq'
   get 'team', to: 'pages#team'

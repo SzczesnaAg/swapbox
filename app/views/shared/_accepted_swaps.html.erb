@@ -45,6 +45,9 @@
         <li class="list-group-item"><%= link_to swap_path(swap) do %>
           <i class="fas fa-comments"></i> <i class="fas fa-info-circle"></i>
           <%end %>
+        <% if @swaps_with_new_messages.include?(swap.id) %>
+          <i class="fas fa-envelope"></i>
+        <% end %>
         </li>
         <% if swap.other_product.status == "exchanged" %>
           <li class="list-group-item"><i class="fas fa-check-circle"></i> Confirmed</li>

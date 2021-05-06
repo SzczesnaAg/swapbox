@@ -5,6 +5,14 @@ class MessagesController < ApplicationController
     @message.swap = @swap
     @message.user = current_user
 
+    if @message.user_id == @swap.user_id
+      @message.notify_message_receiver = true
+      @message.save
+    else
+      @message.notify_message_owner = true
+      @message.save
+    end
+
     if @message.save
       SwapChannel.broadcast_to(
         @swap,
