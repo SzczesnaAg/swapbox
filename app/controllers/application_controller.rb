@@ -41,6 +41,7 @@ class ApplicationController < ActionController::Base
 
     @my_swap_requests = Swap.where(user_id: current_user.id, notify_requester: true)
     @my_products_swaps = Swap.joins(:product).where("products.user_id = ?", current_user.id) & Swap.where(notify_owner: true)
+    @all_not = @my_swap_requests.count + @my_products_swaps.count
     @should_notify_current_user = @my_swap_requests.count.positive? || @my_products_swaps.count.positive?
   end
 
@@ -56,7 +57,7 @@ class ApplicationController < ActionController::Base
     @messages_on_my_products.each do |message|
       @swaps_with_new_messages.push(message.swap_id)
     end
-
+    @all_mess = @messages_on_my_swaps.count + @messages_on_my_products.count
     @new_message = @messages_on_my_swaps.count.positive? || @messages_on_my_products.count.positive?
   end
 end
