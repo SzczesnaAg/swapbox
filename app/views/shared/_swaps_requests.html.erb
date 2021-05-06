@@ -11,7 +11,7 @@
     <% end %>
   </div>
     <div class="card-body">
-      <p>from <%= swap.product.user.first_name %></p>
+      <p>from <%= link_to swap.product.user.first_name, user_path(swap.product.user) %></p>
       <% if swap.product.category == 'Puzzle' %>
         <p class="card-text"><i class="fas fa-puzzle-piece"></i> <%= swap.product.category %></p>
       <% else %>
