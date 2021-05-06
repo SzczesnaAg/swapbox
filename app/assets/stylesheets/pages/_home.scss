@@ -11,6 +11,10 @@ h3 {
   margin-top: 0;
 }
 
+.fa-arrow-left {
+  display: none;
+}
+
 @media screen and (max-width: 575px) {
   .mobile {
     display: block;
