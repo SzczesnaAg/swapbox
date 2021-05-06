@@ -1,6 +1,6 @@
 <div class="row">
   <% @swaps_requests_for_owner.each do |swap| %>
-    <div class="col-12 col-sm-12 col-md-4 col-lg-2 card-dashboard">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 card-request">
       <div class="card-body">
         <% if swap.product.photo.attached? %>
           <%= cl_image_tag(swap.product.photo.key) %>
@@ -15,8 +15,8 @@
           <% if swap.notify_owner == true %>
             <i class="fas fa-bell"></i>
           <% end %>
-          from <%= link_to swap.user.first_name, user_path(swap.user) %></li>
-        <li class="list-group-item"><%= link_to 'Details', choose_item_to_swap_path(swap) %></li>
+          from <%= swap.user.first_name %></li>
+        <li class="list-group-item"><i class="fas fa-info-circle"></i> <%= link_to 'Details', choose_item_to_swap_path(swap) %></li>
       </ul>
     </div>
   <% end %>

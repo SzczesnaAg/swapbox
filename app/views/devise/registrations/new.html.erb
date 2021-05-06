@@ -11,20 +11,20 @@
           <%= f.input :first_name,
                       required: true,
                       autofocus: true,
-                      input_html: { autocomplete: "first_name" }, placeholder: 'e.g. John'%>
+                      input_html: { autocomplete: "off" }, placeholder: 'e.g. John'%>
           <%= f.input :last_name,
                       required: true,
-                      input_html: { autocomplete: "last_name" }, placeholder: 'e.g. Doe'%>
+                      input_html: { autocomplete: "off" }, placeholder: 'e.g. Doe'%>
           <%= f.input :email,
                       required: true,
-                      input_html: { autocomplete: "email" }, placeholder: 'e.g. users@email.com'%>
+                      input_html: { autocomplete: "off" }, placeholder: 'e.g. users@email.com'%>
           <%= f.input :password,
                       required: true,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" }, placeholder: 'Your password'%>
+                      input_html: { autocomplete: "off" }, placeholder: 'Your password'%>
           <%= f.input :password_confirmation,
                       required: true,
-                      input_html: { autocomplete: "new-password" }, placeholder: 'Repeat your password' %>
+                      input_html: { autocomplete: "off" }, placeholder: 'Repeat your password' %>
           <%= f.input :photo, as: :file %>
         </div>
 

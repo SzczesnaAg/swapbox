@@ -1,5 +1,5 @@
 <% @swaps_requests.each do |swap| %>
-  <div class="col-12 col-sm-12 col-md-4 col-lg-3 card-dashboard">
+  <div class="col-12 col-sm-12 col-md-4 col-lg-4 card-dashboard">
     <div class="card-header">You requested</div>
     <div class="card-body">
     <% if swap.product.photo.attached? %>
@@ -12,7 +12,11 @@
   </div>
     <div class="card-body">
       <p>from <%= link_to swap.product.user.first_name, user_path(swap.product.user) %></p>
-      <p class="card-text">Category: <%= swap.product.category %></p>
+      <% if swap.product.category == 'Puzzle' %>
+        <p class="card-text"><i class="fas fa-puzzle-piece"></i> <%= swap.product.category %></p>
+      <% else %>
+        <p class="card-text"><i class="fas fa-book"></i></i> <%= swap.product.category %></p>
+      <% end %>
       <p class="card-text"><i class="fas fa-map-marker-alt"></i> <%= swap.product.city %></p>
       <% if policy(swap).mark_as_canceled? %>
         <%= link_to canceled_swap_path(swap), method: :patch do %>
