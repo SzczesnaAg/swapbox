@@ -1,6 +1,9 @@
 <% @swaps_accepted.each do |swap| %>
     <div class="col-12 col-sm-12 col-md-4 col-lg-4 card-dashboard">
-      <div class="card-header">You swapped</div>
+      <div class="card-header <%= 'notify' if swap.notify_owner == true || @swaps_with_new_messages.include?(swap.id) %>">You swapped</div>
+      <% if swap.notify_owner == true %>
+        <i class="fas fa-bell"></i>
+      <% end %>
       <div class="card-body">
         <% if swap.product.photo.attached? %>
           <%= cl_image_tag(swap.product.photo.key) %>
