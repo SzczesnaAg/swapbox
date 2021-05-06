@@ -5,6 +5,10 @@ body {
   text-align: center;
 }
 
+main {
+  position: relative;
+}
+
 .wrapper {
   background-color: #fff;
   padding: 30px 0;
@@ -18,4 +22,3 @@ p a:hover {
   color: #000;
   text-decoration: underline;
 }
-

@@ -58,7 +58,7 @@
 .card-index {
   border: 2px solid rgba(0,0,0,0.1);
   box-shadow: 3px 6px 10px rgba(0,0,0,0.1);
-  padding: 0;
+  padding: 5px;
   border-radius: 2px;
   background: white;
   height: 436px;
@@ -74,7 +74,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 236px;
+  height: 200px;
 }
 
 .card-dashboard {
@@ -87,6 +87,7 @@
 img {
   height: 150px;
   width: 100%;
+  object-fit: cover;
   }
 }
 
@@ -97,22 +98,16 @@ img {
   border-radius: 2px;
   background: white;
   height: 300px;
+  width: 50%;
 img {
   height: 150px;
   width: 100%;
+  object-fit: cover;
   }
 }
 
 .card-title a {
   color: black;
-}
-
-.fa-trash-alt, .fa-edit, .fa-arrow-left, .fas{
-  color: #52057b;
-}
-
-.fa-arrow-left {
-  font-size: 20px;
 }
 
 .list-group-flush a {
@@ -136,10 +131,6 @@ img {
 .accepted {
   justify-content: space-around;
   align-items: center;
-}
-
-.fa-bell, .comments-red {
-  color: #bc0f0f;
 }
 
 .text-align-left {
@@ -173,12 +164,30 @@ img {
   }
 }
 
+.card-carousel-choose {
+  border: 2px solid rgba(0,0,0,0.1);
+  box-shadow: 3px 6px 10px rgba(0,0,0,0.1);
+  padding: 10px;
+  border-radius: 2px;
+  background: white;
+  height: 436px;
+  img {
+    height: 200px;
+    width: 80%;
+    object-fit: cover;
+  }
+}
 .card-show {
   background: white;
 }
 
+
 .notify {
   background: $dark-purple;
   color: white;
+}
+
+.choose a {
+  color: black;
 }
 
