@@ -25,9 +25,15 @@
           <%= @reviews.count %>
         </h5>
         <%= simple_form_for [ @user, @review ] do |f| %>
-          <%= f.input :content, label: 'Write your Review', placeholder: "How was your experience with #{@user.first_name}?" %>
-          <%= f.input :rating, label: 'Give a Rating', collection: 0..5 %>
-          <%= f.submit "Submit a Review", class: "btn-swap" %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+            <div class="form-inputs form">
+              <%= f.input :content, label: 'Write your Review', placeholder: "How was your experience with #{@user.first_name}?" %>
+              <%= f.input :rating, label: 'Give a Rating', collection: 1..5 %>
+            </div>
+            <div class="form-actions">
+              <%= f.submit "Submit a Review", class: "btn-swap" %>
+            </div>
         <% end %>
         <div class="reviews">
           <h5>What others had to say about <%= @user.first_name %></h5>
