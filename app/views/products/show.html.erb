@@ -18,7 +18,7 @@
           <div class="d-flex" style="justify-content: space-between;">
             <div>
               <%= cl_image_tag @product.user.photo.attached? ? cl_image_path(@product.user.photo.key) : asset_path('user.png'), class: "avatar-large" %>
-              <p><%= @product.user.first_name%></p>
+              <p><%= link_to @product.user.first_name, user_path(@product.user)%></p>
             </div>
             <div>
               <p><i class="fas fa-map-marker-alt"></i> <%= @product.city %></p>
