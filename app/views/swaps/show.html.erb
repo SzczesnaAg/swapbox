@@ -1,3 +1,4 @@
+<%= render 'shared/back_arrow' %>
 <div class="container d-flex">
   <div class="row">
     <div class="col-12 col-sm-12 col-md-6 col-lg-8">
@@ -7,7 +8,7 @@
 
     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
       <h2>Chat with <%= @chat_user.first_name %></h2>
-      <div class="show-card p-3">
+      <div class="card-show p-3">
         <div id="messages" data-swap-id="<%= @swap.id %>" data-user-id="<%= current_user.id %>">
           <% @swap.messages.each do |message| %>
           <%= render 'messages/message', message: message  %>
@@ -27,4 +28,3 @@
     </div>
   </div>
 </div>
-<p class="back-link"><%= link_to 'Back to Dashboard', my_dashboard_path %></p>
