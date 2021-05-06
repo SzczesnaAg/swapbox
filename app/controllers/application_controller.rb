@@ -57,7 +57,6 @@ class ApplicationController < ActionController::Base
     @messages_on_my_products.each do |message|
       @swaps_with_new_messages.push(message.swap_id)
     end
-    @all_mess = @messages_on_my_swaps.count + @messages_on_my_products.count
     @new_message = @messages_on_my_swaps.count.positive? || @messages_on_my_products.count.positive?
   end
 end
