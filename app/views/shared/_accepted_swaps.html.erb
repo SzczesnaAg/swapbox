@@ -26,7 +26,7 @@
 <% end %>
 <% @swaps_requests_accepted.each do |swap| %>
     <div class="col-12 col-sm-12 col-md-4 col-lg-4 card-dashboard">
-      <div class="card-header">You swapped
+      <div class="card-header <%= 'notify' if swap.notify_requester == true || @swaps_with_new_messages.include?(swap.id) %>">You swapped
         <% if swap.notify_requester == true %>
           <i class="fas fa-bell"></i>
         <% end %>
@@ -45,9 +45,6 @@
         <li class="list-group-item"><%= link_to swap_path(swap) do %>
           <i class="fas fa-comments"></i> <i class="fas fa-info-circle"></i>
           <%end %>
-        <% if @swaps_with_new_messages.include?(swap.id) %>
-          <i class="fas fa-envelope"></i>
-        <% end %>
         </li>
         <% if swap.other_product.status == "exchanged" %>
           <li class="list-group-item"><i class="fas fa-check-circle"></i> Confirmed</li>

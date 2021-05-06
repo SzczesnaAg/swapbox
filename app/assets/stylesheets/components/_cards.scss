@@ -138,7 +138,7 @@ img {
   align-items: center;
 }
 
-.fa-bell, .fa-envelope {
+.fa-bell, .comments-red {
   color: #bc0f0f;
 }
 
@@ -176,3 +176,9 @@ img {
 .card-show {
   background: white;
 }
+
+.notify {
+  background: $dark-purple;
+  color: white;
+}
+
