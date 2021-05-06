@@ -1,41 +1,48 @@
-<h1>Hi <%= @user.first_name %></h1>
+<div class="mt-4">
+  <h1>Hi <strong><%= @user.first_name %></strong></h1>
+</div>
 <div class="container">
   <% if @user.products.where(status: 1).count == 0 %>
     <div>
       <h2>You don't have any new requests</h2>
     </div>
     <div class="row">
-      <div class='col-12' >
-        <%= image_tag('my_dashboard_placeholder.png', alt: 'placeholder photo')%>
+      <div class='col-12'>
+        <%= image_tag('my_dashboard_placeholder.png', alt: 'placeholder photo', class: "banner-small")%>
       </div>
     </div>
   <% else %>
-    <h2>Requests for You</h2>
-    <div>
-      <%= render 'shared/swap_request_for_owner' %>
+    <h2>Requests for <strong>You</strong></h2>
+    <div class="row">
+      <div>
+        <%= render 'shared/swap_request_for_owner' %>
+      </div>
     </div>
   <% end %>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <div>
-        <h2>Accepted Swaps</h2>
+<div class="wrapper mt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+        <div>
+          <h2>Accepted Swaps</h2>
+        </div>
+        <div class="row mr-2">
+          <%= render 'shared/accepted_swaps' %>
+        </div>
       </div>
-      <div class="row mr-2">
-        <%= render 'shared/accepted_swaps' %>
-      </div>
-    </div>
-    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
-      <div>
-        <h2>Sent Requests</h2>
-      </div>
-      <div class="row">
-        <%= render 'shared/swaps_requests' %>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+        <div>
+          <h2>Sent Requests</h2>
+        </div>
+        <div class="row">
+          <%= render 'shared/swaps_requests' %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="container mb-3">
   <h2>Your available Products</h2>
   <%= render 'shared/carousel_products', all_products: @products %>

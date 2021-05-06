@@ -32,6 +32,7 @@ import { fqaToggle } from '../plugins/faq';
 import { initSwapCable } from '../channels/swap_channel';
 import { scrollLastMessageIntoView } from '../plugins/scroll';
 import { InitNotificationMessages } from '../plugins/notification_messages';
+import { initUpdateNavbarOnScroll } from '../plugins/navbar';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -42,4 +43,5 @@ document.addEventListener('turbolinks:load', () => {
   initSwapCable();
   scrollLastMessageIntoView();
   InitNotificationMessages();
+  initUpdateNavbarOnScroll();
 });

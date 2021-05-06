@@ -1,4 +1,4 @@
-<div class=" <%= 'me' if message.user == current_user %> ">
+<div class="<%= 'me' if message.user == current_user %>" data-user-id= "<%= message.user.id %>">
   <div class="message-container" id="message-<%= message.id %>">
     <p><%= message.content %></p>
   </div>

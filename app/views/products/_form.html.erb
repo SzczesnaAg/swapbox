@@ -1,16 +1,16 @@
-<div class=" m-3 p-5">
+<div class="m-3">
     <%= simple_form_for(@product) do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs form">
-        <%= f.input :title, placeholder: 'e.g. Cats' %>
+        <%= f.input :title, input_html: { autocomplete: "off" }, placeholder: 'e.g. Cats' %>
         <%= f.input :category, as: :select, collection: ['Book', 'Puzzle'] %>
         <%= f.input :description, placeholder: 'Enter a comprehensive description of the product'  %>
-        <%= f.input :street, placeholder: 'e.g. Bellerivestrasse 1' %>
-        <%= f.input :zipcode, placeholder: 'e.g. 8008'%>
-        <%= f.input :city, placeholder: 'e.g. Zürich'%>
-        <%= f.input :tags, placeholder: 'e.g. How many pieces are in your puzzle? What genre is your book?' %>
+        <%= f.input :street, input_html: { autocomplete: "off" }, placeholder: 'e.g. Bellerivestrasse 1' %>
+        <%= f.input :zipcode, input_html: { autocomplete: "off" }, placeholder: 'e.g. 8008'%>
+        <%= f.input :city, input_html: { autocomplete: "off" }, placeholder: 'e.g. Zürich'%>
+        <%= f.input :tags, input_html: { autocomplete: "off" }, placeholder: 'e.g. How many pieces are in your puzzle? What genre is your book?' %>
         <%= f.input :photo, as: :file %>
       </div>
 
