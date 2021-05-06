@@ -16,7 +16,7 @@
         <% end %>
       </div>
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">from <strong><%= link_to swap.user.first_name, user_path(swap.product.user) %></strong></li>
+        <li class="list-group-item">from <strong><%= link_to swap.user.first_name, user_path(swap.user) %></strong></li>
         <li class="list-group-item"><i class="fas fa-info-circle"></i> <%= link_to 'Details', choose_item_to_swap_path(swap) %></li>
       </ul>
     </div>
