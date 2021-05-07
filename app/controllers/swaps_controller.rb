@@ -92,7 +92,7 @@ class SwapsController < ApplicationController
     @swap.status = "accepted"
     @swap.notify_requester = true
     @swap.save
-    redirect_to my_dashboard_path, notice: "Congrats! You made a swap."
+    redirect_to swap_path(@swap), notice: "Congrats! You made a swap."
   end
 
   def mark_as_exchanged
