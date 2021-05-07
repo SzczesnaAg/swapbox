@@ -16,9 +16,20 @@
           <h3 class="card-title mb-3"><strong><%=  @product.title %></strong></h3>
           <p class="card-text mb-5"><%= @product.description %></p>
           <div class="d-flex" style="justify-content: space-between;">
-            <div>
+            <div class="rating">
               <%= cl_image_tag @product.user.photo.attached? ? cl_image_path(@product.user.photo.key) : asset_path('user.png'), class: "avatar-large" %>
-              <p><%= link_to @product.user.first_name, user_path(@product.user)%></p>
+              <p style="margin-bottom: 0;"><%= link_to @product.user.first_name, user_path(@product.user)%></p>
+              <p>
+                <% count = 0 %>
+                <% 5.times do %>
+                  <% if @avg_rating > count %>
+                    <i class="fas fa-star" style="font-size: 12px"></i>
+                  <% else %>
+                    <i class="far fa-star" style="font-size: 12px"></i>
+                  <% end %>
+                  <% count += 1 %>
+                <% end %>
+              </p>
             </div>
             <div>
               <p><i class="fas fa-map-marker-alt"></i> <%= @product.city %></p>

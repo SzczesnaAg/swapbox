@@ -45,6 +45,18 @@ class ProductsController < ApplicationController
   end
 
   def show
+
+    @review = Review.new
+    @reviews = Review.where(user: @product.user)
+
+    @ratings = @reviews.map do |i|
+      i.rating
+    end
+    if @ratings.sum > 0
+      @avg_rating = (@ratings.sum / @reviews.count)
+    else
+      @avg_rating = 0
+    end
   end
 
   def create
