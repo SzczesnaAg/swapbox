@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      resources :products
+      resources :messages
+      resources :reviews
+      resources :swaps
+
+      root to: "users#index"
+    end
   get 'users/show'
   devise_for :users
   resources :users, only: [:show] do
