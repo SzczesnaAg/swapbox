@@ -1,5 +1,0 @@
-regular:
-  first_name: Tyrian
-  last_name: Lannister
-  email: tyrian@kingslanding.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

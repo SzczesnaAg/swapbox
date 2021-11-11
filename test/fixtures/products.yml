@@ -1,0 +1,15 @@
+puzzle:
+  title: impossible
+  description: hard
+  category: puzzle
+  user: tyrian
+  street: zollikerstrasse
+  city: zollikon
+
+book:
+  title: circle
+  description: interesting
+  category: book
+  user: cersei
+  street: hardturmstrasse
+  city: zurich
