@@ -1,0 +1,9 @@
+<% count = 0 %>
+<% 5.times do %>
+  <% if field.to_s > count %>
+    <i class="fas fa-star"></i>
+  <% else %>
+    <i class="far fa-star"></i>
+  <% end %>
+  <% count += 1 %>
+<% end %>

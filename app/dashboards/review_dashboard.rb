@@ -11,7 +11,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     id: Field::Number,
     content: Field::Text,
-    rating: Field::Number,
+    rating: StarsField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
