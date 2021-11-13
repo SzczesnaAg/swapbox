@@ -12,6 +12,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     id: Field::Number,
     content: Field::Text,
     rating: StarsField,
+    status: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,6 +27,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     id
     content
     rating
+    status
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +37,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     id
     content
     rating
+    status
     created_at
     updated_at
   ].freeze
@@ -46,6 +49,7 @@ class ReviewDashboard < Administrate::BaseDashboard
     user
     content
     rating
+    status
   ].freeze
 
   # COLLECTION_FILTERS
