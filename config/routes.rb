@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       root to: "users#index"
     end
 
-  patch 'admin/reviews/:id/approve', to: 'admin/reviews#approve', as: :approve_review
-  patch 'admin/reviews/:id/decline', to: 'admin/reviews#decline', as: :decline_review
+  patch 'admin/reviews/:id/approve', to: 'admin/reviews#approve', as: :admin_review_approve
+  patch 'admin/reviews/:id/decline', to: 'admin/reviews#decline', as: :admin_review_decline
 
   get 'users/show'
   devise_for :users
