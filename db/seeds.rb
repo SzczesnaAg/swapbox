@@ -129,7 +129,8 @@ puts "Creating Reviews"
   review = Review.create(
     content: ["Quick response and fast swap. Perfect! THANKS!!", "We ended up sending the items by post (for Covid reasons) and everything arrived quickly!", "Great communication and easy to organize the swap with!", "Amazing Swapper, takes pride in their items and communicates well! Thanks :)", "As described. Thanks.", "Exactly what I needed", "A+ Exchange", "Honest and Reliable", "They were very responsive and great to chat with!", "I really enjoyed my swap!", "Great item, great condition.", "I'm happy with the swap!", "Communication and friendliness put me at ease since this is my first time using the app!"].sample,
     rating: rand(3..5),
-    user: User.all.sample
+    user: User.all.sample,
+    status: ["approved", "created"].sample
     )
 end
 

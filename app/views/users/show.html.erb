@@ -33,7 +33,7 @@
         <% end %>
         <div class="reviews">
           <h5>What others had to say about <%= @user.first_name %></h5>
-          <% @user.reviews.each do |review| %>
+          <% @reviews.each do |review| %>
             <li class="list-group-item">
               <small>
                 <% count = 0 %>
