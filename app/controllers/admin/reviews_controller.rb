@@ -8,6 +8,12 @@ module Admin
     #   send_foo_updated_email(requested_resource)
     # end
 
+    def approve
+      review = Review.find(params[:id])
+      review.status = "approved"
+      review.update(params[:review])
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.

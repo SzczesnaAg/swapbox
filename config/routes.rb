@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
       root to: "users#index"
     end
+
+  patch 'admin/reviews/:id/approve', to: 'admin/reviews#approve', as: :approve_review
+  patch 'admin/reviews/:id/decline', to: 'admin/reviews#decline', as: :decline_review
+
   get 'users/show'
   devise_for :users
   resources :users, only: [:show] do
