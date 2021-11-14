@@ -15,6 +15,13 @@ module Admin
       redirect_to admin_reviews_path, notice: "Congrats! You approved the review."
     end
 
+    def decline
+      @review = Review.find(params[:id])
+      @review.status = "declined"
+      @review.save!
+      redirect_to admin_reviews_path, notice: "You have declined the review."
+    end
+
     # Override this method to specify custom lookup behavior.
     # This will be used to set the resource for the `show`, `edit`, and `update`
     # actions.
