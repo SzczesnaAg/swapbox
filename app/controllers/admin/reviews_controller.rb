@@ -9,9 +9,9 @@ module Admin
     # end
 
     def approve
-      review = Review.find(params[:id])
-      review.status = "approved"
-      review.update(params[:review])
+      @review = Review.find(params[:id])
+      @review.status = "approved"
+      @review.save!
     end
 
     # Override this method to specify custom lookup behavior.
