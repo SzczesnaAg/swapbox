@@ -12,6 +12,7 @@ module Admin
       @review = Review.find(params[:id])
       @review.status = "approved"
       @review.save!
+      redirect_to admin_reviews_path, notice: "Congrats! You approved the review."
     end
 
     # Override this method to specify custom lookup behavior.
