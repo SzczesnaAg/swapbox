@@ -1,0 +1,11 @@
+tyrian:
+  first_name: Tyrian
+  last_name: Lannister
+  email: tyrian@casterlyrock.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+cersei:
+  first_name: Cersei
+  last_name: Lannister
+  email: cersei@casterlyrock.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

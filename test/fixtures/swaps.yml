@@ -1,0 +1,6 @@
+swap1:
+  user: tyrian
+  product: puzzle
+  other_product: book
+  status: accepted
+  note: swap?

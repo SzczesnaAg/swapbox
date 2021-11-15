@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize @user
     @review = Review.new
-    @reviews = Review.where(user: @user)
+    @reviews = Review.where(user: @user, status: 1)
     @products = Product.where(user_id: @user.id, status: 0)
 
     @ratings = @reviews.map do |i|
