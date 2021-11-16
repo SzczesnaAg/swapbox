@@ -74,8 +74,8 @@ to display a collection of resources in an HTML table.
           </td>
         <% end %>
 
-        <td><%= link_to("Approve", admin_review_approve_path(resource), method: :patch) %></td>
-        <td><%= link_to("Decline", admin_review_decline_path(resource), method: :patch) %></td>
+        <td><%= link_to("Approve", approve_admin_review_path(resource), method: :patch) %></td>
+        <td><%= link_to("Decline", decline_admin_review_path(resource), method: :patch) %></td>
 
         <% if valid_action? :edit, collection_presenter.resource_name %>
           <td><%= link_to(

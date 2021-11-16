@@ -4,8 +4,10 @@ Rails.application.routes.draw do
       resources :products
       resources :messages
       resources :reviews do
-        patch 'admin/reviews/:id/approve', to: 'admin/reviews#approve', as: :admin_review_approve
-        patch 'admin/reviews/:id/decline', to: 'admin/reviews#decline', as: :admin_review_decline
+        member do
+          patch 'approve'
+          patch 'decline'
+        end
       end
       resources :swaps
 
