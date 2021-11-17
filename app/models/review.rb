@@ -6,5 +6,12 @@ class Review < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
 
-  enum status: [:created, :approved, :declined]
+  state_machine :initial => :created do
+    event :approve do
+      transition :created => :approved
+    end
+    event :decline do
+      transition :created => :declined
+    end
+  end
 end

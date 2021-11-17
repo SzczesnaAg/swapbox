@@ -10,15 +10,13 @@ module Admin
 
     def approve
       @review = Review.find(params[:id])
-      @review.status = "approved"
-      @review.save!
+      @review.approve
       redirect_to admin_reviews_path, notice: "Congrats! You approved the review."
     end
 
     def decline
       @review = Review.find(params[:id])
-      @review.status = "declined"
-      @review.save!
+      @review.decline
       redirect_to admin_reviews_path, notice: "You have declined the review."
     end
 
